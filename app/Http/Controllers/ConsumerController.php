@@ -14,7 +14,7 @@ class ConsumerController extends Controller
     public function index()
     {
         //
-        $consumers=Consumer::orderBy('first_name','ASC')->paginate(10);
+        $consumers=Consumer::orderBy('first_name','ASC')->paginate(5);
         return view('consumer.index',compact('consumers')); 
     }
 
@@ -38,6 +38,15 @@ class ConsumerController extends Controller
     public function store(Request $request)
     {
         //
+         $rules = [
+            'first_name' => 'alpha',
+            'last_name' => 'alpha',
+            'phone' => 'numeric',
+            'city' => 'alpha',
+            'mail' => 'regex:/^.+@.+$/i',
+        ];
+ 
+        $this->validate($request, $rules);
         $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
         Consumer::create($request->all());

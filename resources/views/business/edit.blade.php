@@ -19,7 +19,7 @@
 			@endif
  
 			<div style="width: 50%;align-content: center;margin: 0 auto;">
-				<h3>Edit consumer</h3>
+				<h3>Edit business</h3>
 			</div>
 									
 					
