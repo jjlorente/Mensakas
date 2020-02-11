@@ -23,8 +23,11 @@
             </a>
         </div>
 
-        <a href="{{route('home')}}" type="button" class="btn btn-primary"> Return Admin Panel</a>
+        
 
+    </div>
+    <div style="width: 100%; text-align: center;">
+    <a href="{{route('home')}}" type="button" class="btn btn-primary"> Return Admin Panel</a>
     </div>
 </body>
 
