@@ -10948,7 +10948,7 @@ a.text-dark:focus {
   background-position: left;
 }
 .opcion_order{
-  background-image: url('/images/ORDER.jpg'); 
+  background-image: url('/images/ORDER.jpg');
 }
 .opcion_deliver{
   background-image: url('/images/DELIVER.jpg');
@@ -10957,7 +10957,7 @@ a.text-dark:focus {
   background-image: url('/images/MENU.jpg');
 }
 .opcion_conusmer{
-  background-image: url('/images/CONSUMER1.jpg');
+  background-image: url('/images/CONSUMER.jpg');
 }
 
 .item_panel h1{

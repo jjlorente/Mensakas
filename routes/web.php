@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::resource('consumer', 'ConsumerController')->middleware('auth');
 Route::resource('business', 'BusinessController')->middleware('auth');
 Route::resource('mensaka', 'MensakaController')->middleware('auth');
+Route::resource('order', 'OrderController')->middleware('auth');
+
 Route::get('/mensaka/{id}/confirm','MensakaController@confirm' )->name('mensaka.confirm');
 Route::get('/business/{id}/confirm','BusinessController@confirm' )->name('business.confirm');
 Route::get('/consumer/{id}/confirm','ConsumerController@confirm' )->name('consumer.confirm');
