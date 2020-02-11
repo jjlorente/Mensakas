@@ -9,39 +9,31 @@
     </div>
     <table class="table  table-bordered table-hover" style="width: 100%; text-align: center;">
       <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between; ">
-        <h1 style="margin-left: 30px;"><b>Manage Business</b></h1>
+        <h1 style="margin-left: 30px;"><b>Manage Mensakas</b></h1>
         <p>
           <a href="{{route('home')}}" type="button" class="btn btn-primary"> Return Admin Panel</a>
-          <a type="submit" href="{{ route('business.create') }}"  class="btn btn-success" style="margin-right: 27px; width: 300px;">Add New Business</a>
+          <a type="submit" href="{{ route('mensaka.create') }}"  class="btn btn-success" style="margin-right: 30px; width: 300px;">Add New Mensaka</a>
         </p>
       </div>
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
-       <th style="border-radius: 10px;">Name</th>
+       <th style="border-radius: 10px;">First name</th>
+       <th style="border-radius: 10px;">Last name</th>
        <th style="border-radius: 10px;">Phone</th>
-       <th style="border-radius: 10px;">Email</th>
-       <th style="border-radius: 10px;">Address</th>
-       <th style="border-radius: 10px;">ZipCode</th>
        <th style="border-radius: 10px;">Status</th>
-       <th style="border-radius: 10px;">Lat</th>
-       <th style="border-radius: 10px;">Lon</th>
        <th style="border-radius: 10px;">Edit</th>
        <th style="border-radius: 10px;">Delete</th>
      </thead>
      <tbody>
-          @if($business->count())  
-          @foreach($business as $busines)  
+          @if($mensakas->count())  
+          @foreach($mensakas as $mensaka)  
           <tr>
-            <td >{{$busines->name}}</td>
-            <td >{{$busines->phone}}</td>
-            <td >{{$busines->mail}}</td>
-            <td>{{$busines->adress}}</td>
-            <td>{{$busines->zip_code}}</td>
-            <td>{{$busines->status}}</td>
-            <td>{{$busines->lat}}</td>
-            <td>{{$busines->lon}}</td>
-            <td ><a href="{{action('BusinessController@edit', $busines->business_id)}}" class="btn btn-primary">Edit</a></td>
+            <td >{{$mensaka->first_name}}</td>
+            <td >{{$mensaka->last_name}}</td>
+            <td >{{$mensaka->phone}}</td>
+            <td >{{$mensaka->status}}</td>
+            <td ><a href="{{action('MensakaController@edit', $mensaka->mensaka_id)}}" class="btn btn-primary">Edit</a></td>
             <td >
-              <a href="{{ route('business.confirm', $busines->business_id ) }}" class="btn btn-danger btncolorblanco">
+              <a href="{{ route('mensaka.confirm', $mensaka->mensaka_id ) }}" class="btn btn-danger btncolorblanco">
                  Delete 
               </a>
              </td>
@@ -56,7 +48,7 @@
 
    </table>
    <div>
-      {{ $business->links() }}
+      {{ $mensakas->links() }}
    </div>
    
   </div>

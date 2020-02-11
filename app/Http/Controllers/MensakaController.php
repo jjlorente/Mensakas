@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use DB;
-use App\Consumer;
+use App\Mensaka;
 use Illuminate\Http\Request;
-class ConsumerController extends Controller
+
+class MensakaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class ConsumerController extends Controller
     public function index()
     {
         //
-        $consumers=Consumer::orderBy('first_name','ASC')->paginate(5);
-        return view('consumer.index',compact('consumers')); 
+        $mensakas=Mensaka::orderBy('first_name','ASC')->paginate(5);
+        return view('mensaka.index',compact('mensakas')); 
     }
 
     /**
@@ -26,7 +27,7 @@ class ConsumerController extends Controller
     public function create()
     {
         //
-        return view('consumer.create');
+         return view('mensaka.create');
     }
 
     /**
@@ -38,19 +39,18 @@ class ConsumerController extends Controller
     public function store(Request $request)
     {
         //
-         $rules = [
+        $rules = [
             'first_name' => 'alpha',
             'last_name' => 'alpha',
             'phone' => 'numeric',
-            'city' => 'alpha',
-            'mail' => 'regex:/^.+@.+$/i',
+            'status' => 'boolean',
         ];
  
         $this->validate($request, $rules);
-        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
+        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'status'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
-        Consumer::create($request->all());
-        return redirect()->route('consumer.index')->with('success','Registro creado satisfactoriamente');
+        Mensaka::create($request->all());
+        return redirect()->route('mensaka.index')->with('notice','Registro creado satisfactoriamente');
     }
 
     /**
@@ -62,8 +62,8 @@ class ConsumerController extends Controller
     public function show($id)
     {
         //
-        $consumers=Consumer::find($id);
-        return  view('consumer.show',compact('consumers'));
+        $mensakas=Mensaka::find($id);
+        return  view('mensaka.show',compact('mensakas'));
     }
 
     /**
@@ -75,8 +75,8 @@ class ConsumerController extends Controller
     public function edit($id)
     {
         //
-        $consumer=Consumer::find($id);
-        return view('consumer.edit',compact('consumer'));
+        $mensaka=Mensaka::find($id);
+        return view('mensaka.edit',compact('mensaka'));
     }
 
     /**
@@ -93,16 +93,15 @@ class ConsumerController extends Controller
             'first_name' => 'alpha',
             'last_name' => 'alpha',
             'phone' => 'numeric',
-            'city' => 'alpha',
-            'mail' => 'regex:/^.+@.+$/i',
+            'status' => 'boolean',
         ];
  
         $this->validate($request, $rules);
-        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
+        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'status'=>'required']);
         
-        Consumer::find($id)->update($request->all());
-        $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
-        return redirect()->route('consumer.index')->with('notice', 'El consumer '.  $consumer->first_name." ". $consumer->last_name.' ha sido actualizado correctamente.');
+        Mensaka::find($id)->update($request->all());
+        $mensaka = DB::table('mensakas')->where('mensaka_id', $id)->first();
+        return redirect()->route('mensaka.index')->with('notice', 'El mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' ha sido actualizado correctamente.');
     }
 
     /**
@@ -114,15 +113,13 @@ class ConsumerController extends Controller
     public function destroy($id)
     {
         //
-        
-        $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
-        Consumer::find($id)->delete();
-        return redirect()->route('consumer.index')->with('notice', 'El consumer '.  $consumer->first_name." ". $consumer->last_name.' ha sido eliminado correctamente.');
+        $mensaka = DB::table('mensakas')->where('mensaka_id', $id)->first();
+        Mensaka::find($id)->delete();
+        return redirect()->route('mensaka.index')->with('notice', 'El mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' ha sido eliminado correctamente.');
     }
-
     public function confirm($id)
     {
-        $consumer = Consumer::findOrFail($id);
-        return view('consumer.confirm', compact('consumer'));
+        $mensaka = Mensaka::findOrFail($id);
+        return view('mensaka.confirm', compact('mensaka'));
     }
 }

@@ -12,7 +12,7 @@
         </div>
 
         <div class="item_panel opcion_mensaka">
-            <a href="" title="">
+            <a href="mensaka" title="">
                 <h1>MENSAKAS</h1>
             </a>
         </div>
