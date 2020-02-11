@@ -21,3 +21,4 @@ Route::get('/consumer/{id}/confirm','ConsumerController@confirm' )->name('consum
 Auth::routes();
 //mensaka color 5c2583
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/homeuser', 'HomeUserController@index')->name('homeuser');

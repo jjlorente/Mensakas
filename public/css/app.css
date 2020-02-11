@@ -10884,3 +10884,120 @@ a.text-dark:focus {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------*/
+/*----------------------- ESTILO PAGINA HOME  --------------------------*/
+/*----------------------------------------------------------------------*/
+.body_home{
+  background-color: #DDD;
+}
+.opciones_admin_panel{
+    width:1200px;
+    height: auto;
+    min-height:500px;
+    margin:0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.item_panel {
+    width: 380px;
+    height: 290px;
+    margin: 5px;
+    overflow: hidden;
+    position: relative;
+    background-color: #8323D1;
+    background-size: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+.item_panel:hover{
+  box-shadow: 0 0 30px -5px black;
+  cursor: pointer;
+}
+.opcion_user{
+  background-image: url('/images/USERS.jpg');
+}
+.opcion_business{
+  background-image: url('/images/BUSINESS.jpg');
+}
+.opcion_mensaka{
+  background-image: url('/images/MENSAKAS.jpg');
+  background-size: 520px;
+  background-position: left;
+}
+.opcion_order{
+  background-image: url('/images/ORDER.jpg'); 
+}
+.opcion_deliver{
+  background-image: url('/images/DELIVER.jpg');
+}
+.opcion_menu{
+  background-image: url('/images/MENU.jpg');
+}
+.opcion_conusmer{
+  background-image: url('/images/CONSUMER1.jpg');
+}
+
+.item_panel h1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  z-index: 2;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 600ms cubic-bezier(1,0,0,1);
+  border: 2px solid white;
+  border-radius: 5px;
+  background: black;
+  padding: 6px;
+}
+.item_panel:hover h1{
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.item_panel::before , .item_panel::after{
+  content: '';
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.6;
+  transition: all 300ms;
+  border: 4px solid white;
+}
+.item_panel::before{
+  transform: rotate(45deg) translateY(-520px) translateX(-80px);
+}
+.item_panel::after{
+  transform: rotate(45deg) translateY(460px) translateX(-120px);
+}
+.item_panel:hover::before{
+  transform: rotate(45deg) translateY(-280px) translateX(-80px);
+}
+.item_panel:hover::after{
+  transform: rotate(45deg) translateY(230px) translateX(-120px);
+}
