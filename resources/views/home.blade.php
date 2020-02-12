@@ -1,23 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<body class="body_home">
+    <div class="opciones_admin_panel" >
 
-                    You are logged in!
-                </div>
-            </div>
+        <div class="item_panel opcion_user">
+            <a href="{{route('homeuser')}}" title="">
+                <h1>USERS</h1>
+            </a>
         </div>
+
+        <div class="item_panel opcion_order">
+            <a href="order" title="">
+                <h1>ORDERS</h1>
+            </a>
+        </div>
+
+        <div class="item_panel opcion_menu">
+            <a href="" title="">
+                <h1>MENUS</h1>
+            </a>
+        </div>
+
     </div>
-</div>
+</body>
+
+
 @endsection

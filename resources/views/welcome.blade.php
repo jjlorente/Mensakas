@@ -67,7 +67,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content" style="position: relative; bottom: 50px;">
                 <div>
-                    <img src="https://pbs.twimg.com/profile_images/1163360821373804544/iShuLlzx_400x400.jpg" style="width: 200px; border:solid white 5px; border-radius: 50px;">
+                    <img src="/images/logo_mensakas.jpg" style="width: 200px; border:solid white 5px; border-radius: 50px;">
                 </div>
                 <div class="title m-b-md" style="color: white;">
                     Mensakas
