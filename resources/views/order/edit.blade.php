@@ -32,11 +32,11 @@
 						<h6 style="width: 10%; margin-top: 10px;">Status: </h6>
 						<div class="from-group">
 							@if($order->status==1)
-							  <input type="radio" name="status" value="0"> undelivered <br>
-							  <input type="radio" name="status" value="1" checked> delivered <br>
+							  <input type="radio" name="status" value="0"> Undelivered <br>
+							  <input type="radio" name="status" value="1" checked> Delivered <br>
 							@else
-								<input type="radio" name="status" value="0" checked> undelivered <br>
-								<input type="radio" name="status" value="1" > delivered <br>
+								<input type="radio" name="status" value="0" checked> Undelivered <br>
+								<input type="radio" name="status" value="1" > Delivered <br>
 							@endif
 						</div>
 

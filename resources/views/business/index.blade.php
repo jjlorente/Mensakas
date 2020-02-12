@@ -36,7 +36,11 @@
             <td >{{$busines->mail}}</td>
             <td>{{$busines->adress}}</td>
             <td>{{$busines->zip_code}}</td>
-            <td>{{$busines->status}}</td>
+              @if($busines->status==1)
+                <td style="background-color: #ACECC3;"> Available</td>
+              @else
+                <td style="background-color: #ECACB2;">Not Available</td>
+              @endif
             <td>{{$busines->lat}}</td>
             <td>{{$busines->lon}}</td>
             <td ><a href="{{action('BusinessController@edit', $busines->business_id)}}" class="btn btn-primary">Edit</a></td>

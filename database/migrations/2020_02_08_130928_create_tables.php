@@ -97,11 +97,9 @@ class CreateTables extends Migration
              $table->engine = 'InnoDB';
             $table->bigIncrements('business_category_id');
             $table->string('name', 100);
-
             $table->unsignedBigInteger('fk_business_id');
             $table->foreign('fk_business_id')->references('business_id')->on('business')->onDelete('cascade');
             $table->timestamps();
-        
         });
 
         Schema::create('product_categories', function(Blueprint $table) {

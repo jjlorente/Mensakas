@@ -30,7 +30,14 @@
             <td >{{$mensaka->first_name}}</td>
             <td >{{$mensaka->last_name}}</td>
             <td >{{$mensaka->phone}}</td>
-            <td >{{$mensaka->status}}</td>
+            
+              @if($mensaka->status==1)
+                <td style="background-color: #ACECC3;"> Available</td>
+              @else
+                <td style="background-color: #ECACB2;">Not Available</td>
+              @endif
+              
+            </td>
             <td ><a href="{{action('MensakaController@edit', $mensaka->mensaka_id)}}" class="btn btn-primary">Edit</a></td>
             <td >
               <a href="{{ route('mensaka.confirm', $mensaka->mensaka_id ) }}" class="btn btn-danger btncolorblanco">

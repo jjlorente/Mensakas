@@ -43,9 +43,10 @@
 						<input type="text" name="phone" id="phone" class="form-control input-sm" value="{{$mensaka->phone}}">
 					</div>
 				
-					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
-						<h6 style="width: 10%;margin-top: 10px;">Status: </h6>
-						<input type="text" name="status" id="status" class="form-control input-sm" value="{{$mensaka->status}}">
+					<div class="form-group" style="display: flex; flex-direction: row;">
+						<h6 style="width: 10%;margin-top: 10px;">Active: </h6>
+						<input type="hidden" value="0" name="status">
+         				<input type="checkbox" value="1" name="status" style="position: relative; margin-left: 0;" @if($mensaka->status) checked @endif>
 					</div>					
 				
 				<div class="row">

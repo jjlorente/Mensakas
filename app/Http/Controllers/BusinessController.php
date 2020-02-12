@@ -92,16 +92,6 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $rules = [
-                'phone' => 'numeric',
-                'zip_code'=> 'numeric',
-                'status' => 'boolean',
-                'mail' => 'regex:/^.+@.+$/i',
-                'lat' => 'numeric',
-                'lon' => 'numeric',
-            ];
- 
-        $this->validate($request, $rules);
         $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
         
         Business::find($id)->update($request->all());

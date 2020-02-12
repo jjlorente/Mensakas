@@ -29,9 +29,9 @@
           <tr>
             <td>{{ $order->fk_consumers_id }}</td>
             @if($order->status==1)
-              <td style="background-color: #ACECC3; ">delivered</td>
+              <td style="background-color: #ACECC3; ">Delivered</td>
             @else
-              <td style="background-color: #ECACB2; ">undelivered</td>
+              <td style="background-color: #ECACB2; ">Undelivered</td>
             @endif
             <td>{{ $order->description }}</td>
             <td>{{ $order->created_at }}</td>
