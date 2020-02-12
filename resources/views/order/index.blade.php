@@ -16,11 +16,12 @@
         </p>
       </div>
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
-       <th style="border-radius: 10px;">Consumer id</th>
+       <th style="border-radius: 10px;">Consumer</th>
        <th style="border-radius: 10px;">Status</th>
        <th style="border-radius: 10px;">Description</th>
        <th style="border-radius: 10px;">Created</th>
        <th style="border-radius: 10px;">Updated</th>
+       <th style="border-radius: 10px;">Edit</th>
      </thead>
      <tbody>
           @if($orders->count())
@@ -31,6 +32,7 @@
             <td>{{ $order->description }}</td>
             <td>{{ $order->created_at }}</td>
             <td>{{ $order->updated_at }}</td>
+            <td ><a href="{{action('OrderController@edit', $order->order_id)}}" class="btn btn-primary">Edit</a></td>
            </tr>
           @endforeach
           @else

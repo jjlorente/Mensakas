@@ -26,7 +26,7 @@ class OrderController extends Controller
     public function create()
     {
         //
-        return view('consumer.create');
+        return view('order.create');
     }
 
     /**
@@ -49,8 +49,8 @@ class OrderController extends Controller
         $this->validate($request, $rules);
         $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
-        Consumer::create($request->all());
-        return redirect()->route('consumer.index')->with('success','Registro creado satisfactoriamente');
+        Order::create($request->all());
+        return redirect()->route('order.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -62,8 +62,8 @@ class OrderController extends Controller
     public function show($id)
     {
         //
-        $consumers=Consumer::find($id);
-        return  view('consumer.show',compact('consumers'));
+        $order=Order::find($id);
+        return  view('order.show',compact('order'));
     }
 
     /**
@@ -75,8 +75,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         //
-        $consumer=Consumer::find($id);
-        return view('consumer.edit',compact('consumer'));
+        $order=Order::find($id);
+        return view('order.edit',compact('order'));
     }
 
     /**
@@ -89,11 +89,11 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
+        $this->validate($request,[ 'description'=>'required']);
 
-        Consumer::find($id)->update($request->all());
-        $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
-        return redirect()->route('consumer.index')->with('notice', 'El consumer '.  $consumer->first_name." ". $consumer->last_name.' ha sido actualizado correctamente.');
+        Order::find($id)->update($request->all());
+        $order = DB::table('order')->where('order_id', $id)->first();
+        return redirect()->route('order.index')->with('notice', 'El order '. $order->order_id .' ha sido actualizado correctamente.');
     }
 
     /**
@@ -106,14 +106,14 @@ class OrderController extends Controller
     {
         //
 
-        $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
-        Consumer::find($id)->delete();
-        return redirect()->route('consumer.index')->with('notice', 'El consumer '.  $consumer->first_name." ". $consumer->last_name.' ha sido eliminado correctamente.');
+        $order = DB::table('orders')->where('order_id', $id)->first();
+        Order::find($id)->delete();
+        return redirect()->route('order.index')->with('notice', 'El order '.  $order->order_id.' ha sido eliminado correctamente.');
     }
 
     public function confirm($id)
     {
-        $consumer = Consumer::findOrFail($id);
-        return view('consumer.confirm', compact('consumer'));
+        $order = Order::findOrFail($id);
+        return view('order.confirm', compact('order'));
     }
 }
