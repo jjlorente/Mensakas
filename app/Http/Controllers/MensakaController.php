@@ -50,7 +50,7 @@ class MensakaController extends Controller
         $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'status'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
         Mensaka::create($request->all());
-        return redirect()->route('mensaka.index')->with('notice','Registro creado satisfactoriamente');
+        return redirect()->route('mensaka.index')->with('notice','Record created successfully');
     }
 
     /**
@@ -92,7 +92,7 @@ class MensakaController extends Controller
         $rules = [
             'first_name' => 'alpha',
             'last_name' => 'alpha',
-            'phone' => 'numeric',
+            'phone' => 'numeric|digits_between:1,9',
             'status' => 'boolean',
         ];
  
@@ -101,7 +101,7 @@ class MensakaController extends Controller
         
         Mensaka::find($id)->update($request->all());
         $mensaka = DB::table('mensakas')->where('mensaka_id', $id)->first();
-        return redirect()->route('mensaka.index')->with('notice', 'El mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' ha sido actualizado correctamente.');
+        return redirect()->route('mensaka.index')->with('notice', 'The mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' has been updated successfully.');
     }
 
     /**
@@ -115,7 +115,7 @@ class MensakaController extends Controller
         //
         $mensaka = DB::table('mensakas')->where('mensaka_id', $id)->first();
         Mensaka::find($id)->delete();
-        return redirect()->route('mensaka.index')->with('notice', 'El mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' ha sido eliminado correctamente.');
+        return redirect()->route('mensaka.index')->with('notice', 'The mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' has been successfully deleted.');
     }
     public function confirm($id)
     {

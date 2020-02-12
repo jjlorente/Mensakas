@@ -50,7 +50,7 @@ class ConsumerController extends Controller
         $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
         Consumer::create($request->all());
-        return redirect()->route('consumer.index')->with('success','Registro creado satisfactoriamente');
+        return redirect()->route('consumer.index')->with('success','Record created successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class ConsumerController extends Controller
         
         Consumer::find($id)->update($request->all());
         $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
-        return redirect()->route('consumer.index')->with('notice', 'El consumer '.  $consumer->first_name." ". $consumer->last_name.' ha sido actualizado correctamente.');
+        return redirect()->route('consumer.index')->with('notice', 'The consumer '.  $consumer->first_name." ". $consumer->last_name.' has been updated successfully.');
     }
 
     /**
@@ -117,7 +117,7 @@ class ConsumerController extends Controller
         
         $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
         Consumer::find($id)->delete();
-        return redirect()->route('consumer.index')->with('notice', 'El consumer '.  $consumer->first_name." ". $consumer->last_name.' ha sido eliminado correctamente.');
+        return redirect()->route('consumer.index')->with('notice', 'The consumer '.  $consumer->first_name." ". $consumer->last_name.' has been successfully deleted.');
     }
 
     public function confirm($id)

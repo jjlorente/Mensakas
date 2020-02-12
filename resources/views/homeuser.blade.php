@@ -7,7 +7,7 @@
 
         <div class="item_panel opcion_conusmer">
             <a href="consumer" title="">
-                <h1>CONSUMER</h1>
+                <h1>CONSUMERS</h1>
             </a>
         </div>
 

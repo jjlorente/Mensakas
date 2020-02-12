@@ -7,7 +7,7 @@
       <p class="alert alert-success"> <strong> {{ Session::get('notice') }} </strong> </p>
     @endif 
     </div>
-    <table class="table  table-bordered table-hover" style="width: 100%; text-align: center;">
+    <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
       <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between; ">
         <h1 style="margin-left: 30px;"><b>Manage Mensakas</b></h1>
         <p>

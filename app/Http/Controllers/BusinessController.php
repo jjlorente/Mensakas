@@ -53,7 +53,7 @@ class BusinessController extends Controller
         $this->validate($request,[ 'name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
         
         Business::create($request->all());
-        return redirect()->route('business.index')->with('notice','Business creado satisfactoriamente');
+        return redirect()->route('business.index')->with('notice','Record created successfully');
     }
 
     /**
@@ -92,11 +92,21 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $rules = [
+                'phone' => 'numeric|digits_between:1,9',
+                'zip_code'=> 'numeric|digits_between:1,5',
+                'status' => 'boolean',
+                'mail' => 'regex:/^.+@.+$/i',
+                'lat' => 'numeric',
+                'lon' => 'numeric',
+            ];
+ 
+        $this->validate($request, $rules);
         $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
         
         Business::find($id)->update($request->all());
         $business = DB::table('business')->where('business_id', $id)->first();
-        return redirect()->route('business.index')->with('notice', 'El business '.  $business->name.' ha sido actualizado correctamente.');
+        return redirect()->route('business.index')->with('notice', 'The business '.  $business->name.' has been updated successfully.');
     }
 
     /**
@@ -110,7 +120,7 @@ class BusinessController extends Controller
         //
         $business = DB::table('business')->where('business_id', $id)->first();
         Business::find($id)->delete();
-        return redirect()->route('business.index')->with('notice', 'El business '.  $business->name.' ha sido eliminado correctamente.');
+        return redirect()->route('business.index')->with('notice', 'The business '.  $business->name.' has been successfully deleted.');
     }
 
     public function confirm($id)

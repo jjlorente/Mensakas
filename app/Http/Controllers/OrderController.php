@@ -50,7 +50,7 @@ class OrderController extends Controller
         $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'target'=>'required', 'city'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
         Order::create($request->all());
-        return redirect()->route('order.index')->with('success','Registro creado satisfactoriamente');
+        return redirect()->route('order.index')->with('success','Record created successfully');
     }
 
     /**
@@ -97,7 +97,7 @@ class OrderController extends Controller
 
         Order::find($id)->update($request->all());
         $order = DB::table('orders')->where('order_id', $id)->first();
-        return redirect()->route('order.index')->with('notice', 'El order '. $order->order_id .' ha sido actualizado correctamente.');
+        return redirect()->route('order.index')->with('notice', 'The order '. $order->order_id .' has been updated successfully.');
     }
 
     /**

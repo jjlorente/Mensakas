@@ -138,7 +138,7 @@ class CreateTables extends Migration
         Schema::create('orders', function(Blueprint $table) {
              $table->engine = 'InnoDB';
             $table->bigIncrements('order_id');
-            $table->text('json')->nullable();
+            $table->json('json')->nullable();
             $table->boolean('status')->default(1);
             $table->string('description', 300)->nullable();
 
