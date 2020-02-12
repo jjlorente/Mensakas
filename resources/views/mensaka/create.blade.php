@@ -41,7 +41,7 @@
 					</div>
 				
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
-						<h6 style="width: 10%;margin-top: 10px;">Address: </h6>
+						<h6 style="width: 10%;margin-top: 10px;">Status: </h6>
 						<input type="text" name="status" id="status" class="form-control input-sm" placeholder="Status">
 					</div>
 				<div class="row">
