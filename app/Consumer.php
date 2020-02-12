@@ -9,8 +9,12 @@ class Consumer extends Model
 {
     //
     protected $table = 'consumers';
-	protected $primaryKey = 'consumer_id';
+	  protected $primaryKey = 'consumer_id';
     protected $fillable = ['first_name','last_name','phone','mail', 'address','target','city',];
 
     protected $cascadeDeletes = ['projectTransactions'];
+
+    public function order_deliver() {
+      return $this->hasOne('App\Order_deliver');
+    }
 }

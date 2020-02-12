@@ -8,8 +8,12 @@ class Extra extends Model
 {
     //
     protected $table = 'extras';
-	protected $primaryKey = 'extra_id';
+	  protected $primaryKey = 'extra_id';
     protected $fillable = ['name','price','description',];
 
-    
+    protected $cascadeDeletes = ['projectTransactions'];
+
+    public function extra() {
+      return $this->hasMany('App\Order_has_pack');
+    }
 }
