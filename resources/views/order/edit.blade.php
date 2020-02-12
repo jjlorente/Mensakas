@@ -28,9 +28,23 @@
 				<input name="_method" type="hidden" value="PATCH">
 
 
+					<div class="form-group" style="display: flex; flex-direction: row;">
+						<h6 style="width: 10%; margin-top: 10px;">Status: </h6>
+						<div class="from-group">
+							@if($order->status==1)
+							  <input type="radio" name="status" value="0"> undelivered <br>
+							  <input type="radio" name="status" value="1" checked> delivered <br>
+							@else
+								<input type="radio" name="status" value="0" checked> undelivered <br>
+								<input type="radio" name="status" value="1" > delivered <br>
+							@endif
+						</div>
+
+					</div>
+
 					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
-						<h6 style="width: 10%; margin-top: 10px;">Description: </h6>
-						<input type="text" name="first_name" id="first_name" class="form-control input-sm" value="{{$order->description}}" >
+						<h6 style="width: 10%; margin-top: 10px;">Notice:</h6>
+						<input type="text" name="description" id="description" class="form-control input-sm" value="{{$order->description}}" >
 					</div>
 
 

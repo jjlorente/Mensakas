@@ -89,10 +89,14 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request,[ 'description'=>'required']);
+        $rules = [
+           'status'=>'boolean',
+       ];
+        $this->validate($request,$rules);
+        $this->validate($request,[ 'description'=>'required' , 'status'=>'required']);
 
         Order::find($id)->update($request->all());
-        $order = DB::table('order')->where('order_id', $id)->first();
+        $order = DB::table('orders')->where('order_id', $id)->first();
         return redirect()->route('order.index')->with('notice', 'El order '. $order->order_id .' ha sido actualizado correctamente.');
     }
 

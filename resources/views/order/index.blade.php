@@ -18,7 +18,7 @@
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
        <th style="border-radius: 10px;">Consumer</th>
        <th style="border-radius: 10px;">Status</th>
-       <th style="border-radius: 10px;">Description</th>
+       <th style="border-radius: 10px;">Notice</th>
        <th style="border-radius: 10px;">Created</th>
        <th style="border-radius: 10px;">Updated</th>
        <th style="border-radius: 10px;">Edit</th>
@@ -28,7 +28,11 @@
           @foreach($orders as $order)
           <tr>
             <td>{{ $order->fk_consumers_id }}</td>
-            <td>{{ $order->status }}</td>
+            @if($order->status==1)
+              <td style="background-color: #ACECC3; ">delivered</td>
+            @else
+              <td style="background-color: #ECACB2; ">undelivered</td>
+            @endif
             <td>{{ $order->description }}</td>
             <td>{{ $order->created_at }}</td>
             <td>{{ $order->updated_at }}</td>
