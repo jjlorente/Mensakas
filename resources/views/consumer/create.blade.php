@@ -19,7 +19,7 @@
 			@endif
  
 			<div style="width: 50%;align-content: center;margin: 0 auto;">
-				<h3>Añadir business</h3>
+				<h3>Añadir consumer</h3>
 			</div>
 									
 					
@@ -64,7 +64,7 @@
 
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<input type="submit"  value="Añadir" class="btn btn-success btn-block">
-						<a href="{{ route('business.index') }}" class="btn btn-info btn-block" >Atrás</a>
+						<a href="{{ route('consumer.index') }}" class="btn btn-info btn-block" >Atrás</a>
 					</div>	
 
 				</div>
