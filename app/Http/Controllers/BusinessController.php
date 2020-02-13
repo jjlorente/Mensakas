@@ -15,8 +15,8 @@ class BusinessController extends Controller
     public function index()
     {
         //
-        $business=Business::orderBy('name','ASC')->paginate(5);
-        return view('business.index',compact('business')); 
+        $business=Business::paginate(5);
+        return view('business.index',compact('business'));
     }
 
     /**
@@ -39,7 +39,7 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         //
-        
+
             $rules = [
                 'phone' => 'numeric',
                 'zip_code'=> 'numeric',
@@ -48,10 +48,10 @@ class BusinessController extends Controller
                 'lat' => 'numeric',
                 'lon' => 'numeric',
             ];
- 
+
         $this->validate($request, $rules);
         $this->validate($request,[ 'name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
-        
+
         Business::create($request->all());
         return redirect()->route('business.index')->with('notice','Record created successfully');
     }
@@ -100,10 +100,10 @@ class BusinessController extends Controller
                 'lat' => 'numeric',
                 'lon' => 'numeric',
             ];
- 
+
         $this->validate($request, $rules);
         $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
-        
+
         Business::find($id)->update($request->all());
         $business = DB::table('business')->where('business_id', $id)->first();
         return redirect()->route('business.index')->with('notice', 'The business '.  $business->name.' has been updated successfully.');
