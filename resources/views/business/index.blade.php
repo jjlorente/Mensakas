@@ -22,8 +22,7 @@
        <th style="border-radius: 10px;">Email</th>
        <th style="border-radius: 10px;">Address</th>
        <th style="border-radius: 10px;">ZipCode</th>
-       <th style="border-radius: 10px;">Day</th>
-       <th style="border-radius: 10px;">Time</th>
+       <th style="border-radius: 10px;">Timetable</th>
        <th style="border-radius: 10px;">Status</th>
        <th style="border-radius: 10px;">Edit</th>
        <th style="border-radius: 10px;">Delete</th>
@@ -32,26 +31,21 @@
           @if($business->count())
           @foreach($business as $busines)
 
-          {{$busines->business_id}}
-          {{DB::table('business_timetables')->where('fk_business_id', $busines->business_id)->pluck('day')}}
-
-
           <tr>
             <td >{{$busines->name}}</td>
             <td >{{$busines->phone}}</td>
             <td >{{$busines->mail}}</td>
             <td>{{$busines->adress}}</td>
             <td>{{$busines->zip_code}}</td>
-            @if( $business == '[1]')
-              <td>open</td>
-            @else
-              <td>close</td>
-            @endif
-            <td>{{$busines->lon}}</td>
+            <td>
+              @foreach( $busines->business_timetables as $timetable )
+                  {{$timetable->day}}: {{$timetable->open}} / {{$timetable->close}} <br>
+              @endforeach
+            </td>
               @if($busines->status==1)
-                <td style="background-color: #ACECC3;"> Available</td>
+                <td style="background-color: #ACECC3;"> Available </td>
               @else
-                <td style="background-color: #ECACB2;">Not Available</td>
+                <td style="background-color: #ECACB2;"> Not Available </td>
               @endif
 
             <td ><a href="{{action('BusinessController@edit', $busines->business_id)}}" class="btn btn-primary">Edit</a></td>
@@ -74,7 +68,7 @@
       {{ $business->links() }}
    </div>
 
-   {{ DB::table('business_timetables')->where('fk_business_id', '52')->pluck('day') }}
+
   </div>
 </div>
 @endsection

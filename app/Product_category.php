@@ -14,6 +14,6 @@ class Product_category extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function product_has_product_category() {
-      return $this->hasOne('App\Product_has_product_category');
+      return $this->hasOne('App\Product_has_product_category','fk_product_category_id');
     }
 }

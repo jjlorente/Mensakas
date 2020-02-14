@@ -18,6 +18,6 @@ class Product extends Model
     }
 
     public function product_has_product_category() {
-      return $this->hasOne('App\Product_has_product_category');
+      return $this->hasOne('App\Product_has_product_category','fk_product_id');
     }
 }

@@ -14,7 +14,7 @@ class Business_category extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function business(){
-      return $this->belongsTo('App\Business');
+      return $this->belongsTo('App\Business','fk_business_id');
     }
 
 }

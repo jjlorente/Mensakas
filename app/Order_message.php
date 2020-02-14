@@ -13,12 +13,12 @@ class Order_message extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function order(){
-      return $this->belongsTo('App\Order');
+      return $this->belongsTo('App\Order','fk_order_id');
     }
     public function mensaka(){
-      return $this->belongsTo('App\Mensaka');
+      return $this->belongsTo('App\Mensaka','fk_mensakas_id');
     }
     public function business(){
-      return $this->belongsTo('App\Business');
+      return $this->belongsTo('App\Business','fk_business_business_id');
     }
 }

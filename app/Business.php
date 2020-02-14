@@ -13,16 +13,19 @@ class Business extends Model
 
     protected $cascadeDeletes = ['projectTransactions'];
 
-    public function business_category() {
-      return $this->hasOne('App\Business_categories');
+    public function business_categories() {
+      return $this->hasOne('App\Business_category','fk_business_id');
     }
-    public function order_message() {
-      return $this->hasOne('App\Order_messages');
+    public function business_timetables() {
+      return $this->hasMany('App\Business_timetable','fk_business_id');
     }
-    public function pack() {
-      return $this->hasOne('App\Packs');
+    public function order_messages() {
+      return $this->hasOne('App\Order_message','fk_business_id');
     }
-    public function product() {
-      return $this->hasOne('App\Products');
+    public function packs() {
+      return $this->hasOne('App\Pack','fk_business_id');
+    }
+    public function products() {
+      return $this->hasOne('App\Product','fk_business_id');
     }
 }

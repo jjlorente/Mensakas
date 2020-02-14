@@ -12,15 +12,15 @@ class Order extends Model
 	  protected $cascadeDeletes = ['projectTransactions'];
 
     public function order_has_pack() {
-      return $this->hasMany('App\Order_has_pack');
+      return $this->hasMany('App\Order_has_pack','fk_order_id');
     }
     public function order_has_product() {
-      return $this->hasMany('App\Order_has_product');
+      return $this->hasMany('App\Order_has_product','fk_order_id');
     }
     public function order_message() {
-      return $this->hasOne('App\Order_message');
+      return $this->hasOne('App\Order_message','fk_order_id');
     }
     public function payment() {
-      return $this->hasOne('App\Payment');
+      return $this->hasOne('App\Payment','fk_order_id');
     }
 }

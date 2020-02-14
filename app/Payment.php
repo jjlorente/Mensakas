@@ -14,6 +14,6 @@ class Payment extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function order(){
-      return $this->belongsTo('App\Order');
+      return $this->belongsTo('App\Order','fk_order_id');
     }
 }

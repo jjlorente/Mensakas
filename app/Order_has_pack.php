@@ -12,11 +12,11 @@ class Order_has_pack extends Model
 
     protected $cascadeDeletes = ['projectTransactions'];
 
-    public function Order(){
-      return $this->belongsTo('App\Order');
+    public function order(){
+      return $this->belongsTo('App\Order','fk_order_id');
     }
 
-    public function Pack(){
-      return $this->belongsTo('App\Pack');
+    public function pack(){
+      return $this->belongsTo('App\Pack','fk_pack_id');
     }
 }

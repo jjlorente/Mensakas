@@ -15,6 +15,6 @@ class Consumer extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function order_deliver() {
-      return $this->hasOne('App\Order_deliver');
+      return $this->hasOne('App\Order_deliver','fk_consumers_id');
     }
 }
