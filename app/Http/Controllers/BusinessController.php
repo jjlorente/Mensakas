@@ -12,10 +12,17 @@ class BusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $business=Business::orderBy('name','ASC')->paginate(5);
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+        if ($tipo && $buscar) {
+            $business = Business::buscarpor($tipo, $buscar)->orderBy('name','ASC')->get();
+        }else{
+            $business = Business::orderBy('name','ASC')->paginate(5);
+        }
+        
         return view('business.index',compact('business'));
     }
 

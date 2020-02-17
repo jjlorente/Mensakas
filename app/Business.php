@@ -26,6 +26,12 @@ class Business extends Model
       return $this->hasOne('App\Pack','fk_business_id');
     }
     public function products() {
-      return $this->hasOne('App\Product','fk_business_id');
+      return $this->hasMany('App\Product','fk_business_id');
+    }
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+      if ( ($tipo) && ($buscar) ) {
+        return $query->where($tipo,'like',"%$buscar%");
+      }
     }
 }

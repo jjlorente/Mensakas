@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 use DB;
-use App\Mensaka;
+use App\Product;
+use App\Business;
 use Illuminate\Http\Request;
 
-class MensakaController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +20,11 @@ class MensakaController extends Controller
         $tipo = $request->get('tipo');
 
         if ($tipo && $buscar) {
-            $mensakas = Mensaka::buscarpor($tipo, $buscar)->orderBy('first_name','ASC')->get();
+            $products = Product::buscarpor($tipo, $buscar)->orderBy('fk_business_id','ASC')->get();
         }else{
-            $mensakas = Mensaka::orderBy('first_name','ASC')->paginate(5);
+            $products = Product::orderBy('fk_business_id','ASC')->paginate(5);
         } 
-        return view('mensaka.index',compact('mensakas')); 
+        return view('product.index',compact('products')); 
     }
 
     /**
@@ -34,7 +35,8 @@ class MensakaController extends Controller
     public function create()
     {
         //
-         return view('mensaka.create');
+        $business = Business::all();
+        return view('product.create',compact('business'));
     }
 
     /**
@@ -47,17 +49,16 @@ class MensakaController extends Controller
     {
         //
         $rules = [
-            'first_name' => 'alpha',
-            'last_name' => 'alpha',
-            'phone' => 'numeric',
+            'name' => 'alpha',
+            'price' => 'numeric',
             'status' => 'boolean',
         ];
- 
+
         $this->validate($request, $rules);
-        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'status'=>'required']);
+        $this->validate($request,[ 'name'=>'required', 'description'=>'required', 'status'=>'required', 'price'=>'required','fk_business_id'=>'required']);
         //'first_name','last_name','phone','mail', 'address','target','city'
-        Mensaka::create($request->all());
-        return redirect()->route('mensaka.index')->with('notice','Record created successfully');
+        Product::create($request->all());
+        return redirect()->route('product.index')->with('success','Record created successfully');
     }
 
     /**
@@ -69,8 +70,8 @@ class MensakaController extends Controller
     public function show($id)
     {
         //
-        $mensakas=Mensaka::find($id);
-        return  view('mensaka.show',compact('mensakas'));
+        $product=Product::find($id);
+        return  view('product.show',compact('product'));
     }
 
     /**
@@ -82,8 +83,8 @@ class MensakaController extends Controller
     public function edit($id)
     {
         //
-        $mensaka=Mensaka::find($id);
-        return view('mensaka.edit',compact('mensaka'));
+        $product=Product::find($id);
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -97,18 +98,15 @@ class MensakaController extends Controller
     {
         //
         $rules = [
-            'first_name' => 'alpha',
-            'last_name' => 'alpha',
-            'phone' => 'numeric|digits_between:1,9',
+            'price' => 'numeric',
             'status' => 'boolean',
         ];
- 
-        $this->validate($request, $rules);
-        $this->validate($request,[ 'first_name'=>'required', 'last_name'=>'required', 'phone'=>'required', 'status'=>'required']);
-        
-        Mensaka::find($id)->update($request->all());
-        $mensaka = DB::table('mensakas')->where('mensaka_id', $id)->first();
-        return redirect()->route('mensaka.index')->with('notice', 'The mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' has been updated successfully.');
+        $this->validate($request,$rules);
+        $this->validate($request,[ 'name'=>'required','price'=>'required','description'=>'required' , 'status'=>'required']);
+
+        Product::find($id)->update($request->all());
+        $product = DB::table('products')->where('product_id', $id)->first();
+        return redirect()->route('product.index')->with('notice', 'The product '. $product->product_id .' has been updated successfully.');
     }
 
     /**
@@ -120,13 +118,14 @@ class MensakaController extends Controller
     public function destroy($id)
     {
         //
-        $mensaka = DB::table('mensakas')->where('mensaka_id', $id)->first();
-        Mensaka::find($id)->delete();
-        return redirect()->route('mensaka.index')->with('notice', 'The mensaka '.  $mensaka->first_name." ". $mensaka->last_name.' has been successfully deleted.');
+        $product = DB::table('products')->where('product_id', $id)->first();
+        Product::find($id)->delete();
+        return redirect()->route('product.index')->with('notice', 'El product '.  $product->product_id.' ha sido eliminado correctamente.');
     }
+
     public function confirm($id)
     {
-        $mensaka = Mensaka::findOrFail($id);
-        return view('mensaka.confirm', compact('mensaka'));
+        $product = Product::findOrFail($id);
+        return view('product.confirm', compact('product'));
     }
 }

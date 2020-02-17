@@ -11,10 +11,17 @@ class ConsumerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $consumers=Consumer::orderBy('first_name','ASC')->paginate(5);
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+
+        if ($tipo && $buscar) {
+            $consumers = Consumer::buscarpor($tipo, $buscar)->orderBy('first_name','ASC')->get();
+        }else{
+            $consumers = Consumer::orderBy('first_name','ASC')->paginate(5);
+        } 
         return view('consumer.index',compact('consumers')); 
     }
 

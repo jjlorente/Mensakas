@@ -17,4 +17,10 @@ class Consumer extends Model
     public function order_deliver() {
       return $this->hasOne('App\Order_deliver','fk_consumers_id');
     }
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+      if ( ($tipo) && ($buscar) ) {
+        return $query->where($tipo,'like',"%$buscar%");
+      }
+    }
 }

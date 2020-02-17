@@ -7,24 +7,40 @@
       <p class="alert alert-success"> <strong> {{ Session::get('notice') }} </strong> </p>
     @endif 
     </div>
-    <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
-      <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between; ">
-        <h1 style="margin-left: 30px;"><b>Manage Consumers</b></h1>
-        <p>
+    <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between;">
+      <h1 style="margin-left: 30px;"><b>Manage Consumer</b></h1>
+      <div style="display: flex; flex-direction: row;">
+        <div style="margin-right: 50px;">
+          <form class="form-inline">
+            <select name="tipo" class="form-control"  style="margin-right: 5px;">
+              <option value="first_name">First name</option>
+              <option value="last_name">Last name</option>
+              <option value="phone">Phone</option>
+              <option value="address">Address</option>
+              <option value="target">Credit Card</option>
+              <option value="mail">Email</option>
+              <option value="city">City</option>
+            </select>
+            <input name="buscarpor" type="search" class="form-control"  style="margin-right: 5px;">
+            <button class=" btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+        <div>
           <a href="{{route('home')}}" type="button" class="btn btn-primary"> Return Admin Panel</a>
-          <a type="submit" href="{{ route('consumer.create') }}"  class="btn btn-success" style="margin-right: 30px; width: 300px;">Add New Consumer</a>
-        </p>
+          <a type="submit" href="{{ route('consumer.create') }}"  class="btn btn-success" style="margin-right: 27px; width: 300px;">Add New Consumer</a>
+        </div>
       </div>
+    </div>
+    <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
        <th style="border-radius: 10px;">First name</th>
        <th style="border-radius: 10px;">Last name</th>
        <th style="border-radius: 10px;">Phone</th>
        <th style="border-radius: 10px;">Email</th>
        <th style="border-radius: 10px;">Address</th>
-       <th style="border-radius: 10px;">Target</th>
+       <th style="border-radius: 10px;">Credit Card</th>
        <th style="border-radius: 10px;">City</th>
-       <th style="border-radius: 10px;">Edit</th>
-       <th style="border-radius: 10px;">Delete</th>
+       <th COLSPAN="2" style="border-radius: 10px;">Actions</th>
      </thead>
      <tbody>
           @if($consumers->count())  
@@ -54,7 +70,9 @@
 
    </table>
    <div>
-      {{ $consumers->links() }}
+      @if($consumers instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {{ $consumers->links() }}
+      @endif
    </div>
    
   </div>
