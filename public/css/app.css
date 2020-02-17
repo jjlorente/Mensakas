@@ -10938,7 +10938,6 @@ a.text-dark:focus {
 }
 .opcion_user{
   background-image: url('/images/USERS.jpg');
-  order: 1;
 }
 .opcion_business{
   background-image: url('/images/BUSINESS.jpg');
@@ -10950,14 +10949,12 @@ a.text-dark:focus {
 }
 .opcion_order{
   background-image: url('/images/ORDER.jpg');
-  order: 2;
 }
 .opcion_deliver{
   background-image: url('/images/DELIVER.jpg');
 }
 .opcion_menu{
   background-image: url('/images/MENU.jpg');
-  order: 3;
 }
 .opcion_conusmer{
   background-image: url('/images/CONSUMER.jpg');
