@@ -20,12 +20,14 @@ Route::resource('mensaka', 'MensakaController')->middleware('auth');
 Route::resource('order', 'OrderController')->middleware('auth');
 Route::resource('product', 'ProductController')->middleware('auth');
 Route::resource('pack', 'PackController')->middleware('auth');
+Route::resource('businessCategory', 'BusinessCategoryController')->middleware('auth');
 
 Route::get('/mensaka/{id}/confirm','MensakaController@confirm' )->name('mensaka.confirm');
 Route::get('/business/{id}/confirm','BusinessController@confirm' )->name('business.confirm');
 Route::get('/consumer/{id}/confirm','ConsumerController@confirm' )->name('consumer.confirm');
 Route::get('/product/{id}/confirm','ProductController@confirm' )->name('product.confirm');
 Route::get('/pack/{id}/confirm','PackController@confirm' )->name('pack.confirm');
+Route::get('/businessCategory/{id}/confirm','businessCategoryController@confirm' )->name('businessCategory.confirm');
 Auth::routes();
 //mensaka color 5c2583
 Route::get('/home', 'HomeController@index')->name('home');

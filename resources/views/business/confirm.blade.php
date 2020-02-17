@@ -14,7 +14,7 @@
 	<a class="redondo btn btn-secondary" href="{{ route('business.index') }}">
 		 Cancel
 	</a>
-</form>	
+</form>
 
 </div>
 

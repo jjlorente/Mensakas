@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-	
+
 			@if (count($errors) > 0)
 			<div class="alert alert-danger" style="text-align: center; justify-content: center;">
 				<strong>Error!</strong> Revise los campos obligatorios.<br><br>
@@ -17,12 +17,12 @@
 				{{Session::get('success')}}
 			</div>
 			@endif
- 
+
 			<div style="width: 50%;align-content: center;margin: 0 auto;">
 				<h3>Añadir product</h3>
 			</div>
-									
-					
+
+
 			<form method="POST" action="{{ route('product.store') }}"  role="form" style="width: 50%;align-content: center;margin: 0 auto;">
 				{{ csrf_field() }}
 
@@ -30,17 +30,17 @@
 						<h6 style="width: 10%; margin-top: 10px;">Name: </h6>
 						<input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name">
 					</div>
-				
+
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
 						<h6 style="width: 10%;margin-top: 10px;">Status: </h6>
 						<input type="text" name="status" id="status" class="form-control input-sm" placeholder="Status">
 					</div>
-				
+
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
 						<h6 style="width: 10%;margin-top: 10px;">Price: </h6>
 						<input type="text" name="price" id="price" class="form-control input-sm" placeholder="Price">
 					</div>
-				
+
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
 						<h6 style="width: 10%;margin-top: 10px;">Description: </h6>
 						<input type="text" name="description" id="description" class="form-control input-sm" placeholder="Description">
@@ -58,7 +58,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<input type="submit"  value="Añadir" class="btn btn-success btn-block">
 						<a href="{{ route('product.index') }}" class="btn btn-info btn-block" >Atrás</a>
-					</div>	
+					</div>
 
 				</div>
 			</form>

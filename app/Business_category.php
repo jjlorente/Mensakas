@@ -17,4 +17,9 @@ class Business_category extends Model
       return $this->belongsTo('App\Business','fk_business_id');
     }
 
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+      if ( ($tipo) && ($buscar) ) {
+        return $query->where($tipo,'like',"%$buscar%");
+      }
+    }
 }

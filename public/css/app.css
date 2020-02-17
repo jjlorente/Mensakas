@@ -10966,7 +10966,7 @@ a.text-dark:focus {
   left: 50%;
   color: white;
   z-index: 2;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(1);
   transition: all 600ms cubic-bezier(1,0,0,1);
   border: 2px solid white;
   border-radius: 5px;
@@ -10974,7 +10974,8 @@ a.text-dark:focus {
   padding: 6px;
 }
 .item_panel:hover h1{
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(0);
+  z-index: -2;
 }
 
 .item_panel::before , .item_panel::after{
@@ -10990,14 +10991,15 @@ a.text-dark:focus {
   border: 4px solid white;
 }
 .item_panel::before{
-  transform: rotate(45deg) translateY(-520px) translateX(-80px);
-}
-.item_panel::after{
-  transform: rotate(45deg) translateY(460px) translateX(-120px);
-}
-.item_panel:hover::before{
   transform: rotate(45deg) translateY(-280px) translateX(-80px);
 }
-.item_panel:hover::after{
+.item_panel::after{
   transform: rotate(45deg) translateY(230px) translateX(-120px);
+}
+.item_panel:hover::before{
+  transform: rotate(45deg) translateY(-520px) translateX(-80px);
+}
+.item_panel:hover::after{
+  transform: rotate(45deg) translateY(460px) translateX(-120px);
+
 }
