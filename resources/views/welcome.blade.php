@@ -76,7 +76,9 @@
                 <div class="links">
                     <a href="{{ route('login') }}">Login</a>
                     <a href="{{ route('register') }}">Register</a>
+                    <a href="simulator">Simulador</a>
                 </div>
+              
             </div>
         </div>
     </body>

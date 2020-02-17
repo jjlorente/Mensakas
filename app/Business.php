@@ -9,7 +9,7 @@ class Business extends Model
     //
     protected $table = 'business';
     protected $primaryKey = 'business_id';
-    protected $fillable = ['name','phone','mail', 'adress','zip_code','status','lat','lon',];
+    protected $fillable = ['name','phone','mail', 'adress','zip_code','status','lat','lon','location',];
 
     protected $cascadeDeletes = ['projectTransactions'];
 

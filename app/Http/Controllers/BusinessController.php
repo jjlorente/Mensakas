@@ -57,7 +57,7 @@ class BusinessController extends Controller
             ];
 
         $this->validate($request, $rules);
-        $this->validate($request,[ 'name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
+        $this->validate($request,[ 'name'=>'required', 'phone'=>'required', 'mail'=>'required','location'=>'required' ,'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
 
         Business::create($request->all());
         return redirect()->route('business.index')->with('notice','Record created successfully');
@@ -109,7 +109,7 @@ class BusinessController extends Controller
             ];
 
         $this->validate($request, $rules);
-        $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
+        $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'location'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
 
         Business::find($id)->update($request->all());
         $business = DB::table('business')->where('business_id', $id)->first();

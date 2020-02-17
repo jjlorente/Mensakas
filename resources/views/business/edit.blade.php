@@ -44,6 +44,11 @@
 					</div>
 
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
+						<h6 style="width: 10%;margin-top: 10px;">Location: </h6>
+						<input type="text" name="location" id="location" class="form-control input-sm" value="{{$business->location}}">
+					</div>
+
+					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
 						<h6 style="width: 10%;margin-top: 10px;">Zip Code: </h6>
 						<input type="text" name="zip_code" id="zip_code" class="form-control input-sm" value="{{$business->zip_code}}">
 					</div>

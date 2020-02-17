@@ -35,6 +35,7 @@
        <th style="border-radius: 10px;">Name</th>
        <th style="border-radius: 10px;">Phone</th>
        <th style="border-radius: 10px;">Email</th>
+       <th style="border-radius: 10px;">Location</th>
        <th style="border-radius: 10px;">Address</th>
        <th style="border-radius: 10px;">ZipCode</th>
        <th style="border-radius: 10px;">Timetable</th>
@@ -49,6 +50,7 @@
             <td >{{$busines->name}}</td>
             <td >{{$busines->phone}}</td>
             <td >{{$busines->mail}}</td>
+            <td>{{$busines->location}}</td>
             <td>{{$busines->adress}}</td>
             <td>{{$busines->zip_code}}</td>
             <td>

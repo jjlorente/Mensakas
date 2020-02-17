@@ -30,3 +30,7 @@ Auth::routes();
 //mensaka color 5c2583
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homeuser', 'HomeUserController@index')->name('homeuser');
+
+
+Route::get('/simulator', 'SimulatorController@index');
+Route::post('/simulatorlocation', 'SimulatorController@businessLocation');

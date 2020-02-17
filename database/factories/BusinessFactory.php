@@ -12,6 +12,7 @@ $factory->define(Business::class, function (Faker $faker) {
         'mail' => $faker->unique()->safeEmail,
         'zip_code' => $faker->bothify('#####'), 
         'adress' => $faker->address,
+        'location' =>$faker->city,
         'lat' => $faker->latitude(),
         'lon' => $faker->latitude(),
     ];
