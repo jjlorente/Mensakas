@@ -18,4 +18,10 @@ class Product_has_category extends Model
     public function product_categories(){
       return $this->belongsTo('App\Product_category','fk_product_category_id');
     }
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+      if ( ($tipo) && ($buscar) ) {
+        return $query->where($tipo,'like',"%$buscar%");
+      }
+    }
 }

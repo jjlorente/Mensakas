@@ -11001,5 +11001,39 @@ a.text-dark:focus {
 }
 .item_panel:hover::after{
   transform: rotate(45deg) translateY(460px) translateX(-120px);
+}
 
+
+/*background-color:#D18EEE;
+/*----------------------------------------------------------------------*/
+/*----------------------- ENLACES CATEGORIAS  --------------------------*/
+/*----------------------------------------------------------------------*/
+.enlacesCategories{
+  width:100%;
+  height: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  display:flex;
+  justify-content:center;
+  line-height:50px;
+  font-size: 20px;
+  font-family: Vegur, 'PT Sans', Verdana;"
+
+}
+
+.enlaces{
+  background-color: #DDD;
+  width:20%;
+  height: 100%;
+  margin:0 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+}
+.enlaces:hover{
+  text-decoration: none;
+  color: #000;
+}
+.active{
+  background-color:#EB54CD;
 }
