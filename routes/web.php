@@ -35,8 +35,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homeuser', 'HomeUserController@index')->name('homeuser');
 
-
+//ruta registro consumer
 Route::get('/simulator', 'SimulatorController@index')->name('simulator');
-Route::get('/simulator2', 'SimulatorController@businessLocation')->name('simulator2');
-Route::get('/simulatorproduct', 'SimulatorController@product')->name('simulatorproduct');
+//registro consumer redirect simulator 2
 Route::post('/simulatorbusiness', 'SimulatorController@store')->name('simulatorbusiness');
+//ruta seleccion business
+Route::get('/simulator2', 'SimulatorController@businessLocation')->name('simulator2');
+
+//ruta carrito compra
+Route::get('/simulatorproduct', 'SimulatorController@product')->name('simulatorproduct');
+//hola
+Route::post('/simulatorstoreproducts', 'SimulatorController@storeProduct')->name('simulatorstoreproducts');
+Route::get('/simulatororder', 'SimulatorController@orderIndex')->name('simulatororder');
+

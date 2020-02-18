@@ -58,7 +58,7 @@
 
 					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
 						<h6 style="width: 15%; margin-top: 10px;">Credit Card: </h6>
-						<input type="text" name="credit_card" id="credit_card" class="form-control input-sm" placeholder="Credit Card">
+						<input type="text" name="target" id="target" class="form-control input-sm" placeholder="Credit Card">
 					</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
