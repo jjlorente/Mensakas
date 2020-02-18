@@ -5,6 +5,7 @@ use DB;
 use App\Consumer;
 use App\Business;
 use App\Product;
+use App\Order_has_product;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -19,26 +20,37 @@ class SimulatorController extends Controller
     public function orderIndex()
     {
         error_log('ENtro en orderindex');
-        return view('simulador.orderIndex');
+        $order = session('order');
+        $products = session('products');
+        $quantities = session('quantities');
+        $arrayProducts = session('arrayProducts');
+        return view('simulador.orderIndex',compact('order','products','quantities','arrayProducts'));
     }
 
      public function storeProduct(Request $request)
     {
-        $products = $request->get('products');
+        $arrayProducts = [];
+        $products = $request->get('products', []);
         $quantities = $request->get('quantities', []);
+
         $this->validate($request,[ 'status'=>'required', 'fk_consumers_id'=>'required']);
         $order = Order::create($request->all());
-        
-        
+
+        $consumer = $request->get('fk_consumers_id');
+
         for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {
-                error_log($products[$product]);
-                error_log($quantities[$product]);
-                
+                $producto = Product::where('product_id', $products[$product])->first();
+                $orderProduct = new Order_has_product;
+                $orderProduct->fk_product_id = $producto->product_id;
+                $orderProduct->fk_order_id = $order->order_id;
+                $orderProduct->save();
+                array_push($arrayProducts, $producto);
+
             }
         }
 
-        return redirect()->route('simulatororder');
+        return redirect()->route('simulatororder')->with('order', $order)->with('products', $products)->with('quantities' ,$quantities )->with('arrayProducts',$arrayProducts);
     }
 
     public function product(Request $request){

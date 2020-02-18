@@ -3,8 +3,9 @@
 	<form action="{{ route('simulatorstoreproducts') }}" method="POST">
     @csrf
     <div class="card">
-        <div class="card-header">
-            Products
+        <div class="card-header" style="display: flex; flex-direction: row; justify-content: space-between;">
+            <h3>Products</h3>
+            <h3 style="margin-right: 10px;">Price: <span id="precio">0<span></h3>
         </div>
 
         <div class="card-body">
