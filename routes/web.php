@@ -34,5 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homeuser', 'HomeUserController@index')->name('homeuser');
 
 
-Route::get('/simulator', 'SimulatorController@index');
-Route::post('/simulatorlocation', 'SimulatorController@businessLocation');
+Route::get('/simulator', 'SimulatorController@index')->name('simulator');
+Route::get('/simulator2', 'SimulatorController@businessLocation')->name('simulator2');
+Route::get('/simulatorproduct', 'SimulatorController@product')->name('simulatorproduct');
+Route::post('/simulatorbusiness', 'SimulatorController@store')->name('simulatorbusiness');

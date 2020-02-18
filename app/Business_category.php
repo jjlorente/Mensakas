@@ -9,7 +9,7 @@ class Business_category extends Model
     //
     protected $table = 'business_categories';
     protected $primaryKey = 'business_category_id';
-    protected $fillable = ['name','fk_business','created_at', 'updated_at',];
+    protected $fillable = ['name','fk_business_id','created_at', 'updated_at',];
 
     protected $cascadeDeletes = ['projectTransactions'];
 

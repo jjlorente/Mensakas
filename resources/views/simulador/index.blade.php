@@ -23,7 +23,7 @@
 			</div>
 									
 					
-			<form method="POST" action="simulatorlocation" role="form" style="width: 50%;align-content: center;margin: 0 auto;">
+			<form method="POST" action="{{ route('simulatorbusiness') }}" role="form" style="width: 50%;align-content: center;margin: 0 auto;">
 				{{ csrf_field() }}
 
 					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -38,7 +38,7 @@
 
 					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
 						<h6 style="width: 15%; margin-top: 10px;">Email: </h6>
-						<input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
+						<input type="text" name="mail" id="mail" class="form-control input-sm" placeholder="Email">
 					</div>
 
 					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -53,9 +53,13 @@
 
 					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
 						<h6 style="width: 15%; margin-top: 10px;">Location: </h6>
-						<input type="text" name="location" id="location" class="form-control input-sm" placeholder="Location">
+						<input type="text" name="city" id="city" class="form-control input-sm" placeholder="Location">
 					</div>
 
+					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
+						<h6 style="width: 15%; margin-top: 10px;">Credit Card: </h6>
+						<input type="text" name="credit_card" id="credit_card" class="form-control input-sm" placeholder="Credit Card">
+					</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<input type="submit"  value="Siguiente" class="btn btn-success btn-block">
