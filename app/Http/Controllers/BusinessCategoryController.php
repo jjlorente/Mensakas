@@ -53,7 +53,7 @@ class BusinessCategoryController extends Controller
             ];
         $this->validate($request, $rules);
         */
-        $this->validate($request,[ 'name'=>'required','fk_business_id'=>'required']);
+        $this->validate($request,[ 'name'=>'required']);
 
         Business_category::create($request->all());
         return redirect()->route('businessCategory.index')->with('notice','Record created successfully');

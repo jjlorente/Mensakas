@@ -33,7 +33,8 @@
     </div>
     <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
-       <th style="border-radius: 10px; width:80%;">Name</th>
+       <th style="border-radius: 10px; width:40%;">Name Category</th>
+       <th style="border-radius: 10px; width:40%;">Name Product</th>
        <th COLSPAN="2" style="border-radius: 10px; width:20%;">Actions</th>
      </thead>
      <tbody>
@@ -41,9 +42,12 @@
           @foreach($productCategories as $productesCategory)
 
           <tr>
-            <td >{{$productesCategory->name}}</td>
-            <td ><a href="{{action('ProductCategoryController@edit', $productesCategory->product_category_id)}}" class="btn btn-primary">Edit</a></td>
-            <td ><a href="{{ route('productCategory.confirm', $productesCategory->product_category_id ) }}" class="btn btn-danger btncolorblanco"> Delete </a></td>
+            <td>{{$productesCategory->name}}</td>
+            <td>
+              {{ $productesCategory->product_has_category  }}
+            </td>
+            <td><a href="{{action('ProductCategoryController@edit', $productesCategory->product_category_id)}}" class="btn btn-primary">Edit</a></td>
+            <td><a href="{{ route('productCategory.confirm', $productesCategory->product_category_id ) }}" class="btn btn-danger btncolorblanco"> Delete </a></td>
            </tr>
           @endforeach
           @else

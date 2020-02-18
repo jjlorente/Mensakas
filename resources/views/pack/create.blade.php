@@ -49,10 +49,10 @@
 						<h6 style="width: 10%;margin-top: 10px;">Business: </h6>
 						<select name="fk_business_id" class="form-control"  style="margin-right: 5px;">
 							@foreach($business as $busines)
-				              	<option value="{{$busines->business_id}}">{{$busines->name}}</option>
-			              	@endforeach
-			            </select>
-		            </div>
+				         	<option value="{{$busines->business_id}}">{{$busines->name}}</option>
+			        @endforeach
+			      </select>
+		      </div>
 				<div class="row">
 
 					<div class="col-xs-12 col-sm-12 col-md-12">

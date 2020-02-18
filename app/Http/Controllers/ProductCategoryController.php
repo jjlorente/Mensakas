@@ -23,8 +23,8 @@ class ProductCategoryController extends Controller
         }else{
             $productCategories = Product_category::orderBy('name','ASC')->paginate(5);
         }
-
-        return view('productCategory.index',compact('productCategories'));
+        $product = Product::get();
+        return view('productCategory.index',compact('productCategories','product'));
     }
 
     /**
@@ -54,7 +54,7 @@ class ProductCategoryController extends Controller
             ];
         $this->validate($request, $rules);
         */
-        $this->validate($request,[ 'name'=>'required','fk_product_id'=>'required']);
+        $this->validate($request,[ 'name'=>'required']);
 
         Product_category::create($request->all());
         return redirect()->route('productCategory.index')->with('notice','Record created successfully');

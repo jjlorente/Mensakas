@@ -30,16 +30,6 @@
 						<input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name">
 					</div>
 
-<!--
-					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
-						<h6 style="width: 10%;margin-top: 10px;">Product: </h6>
-						<select name="fk_business_id" id="fk_business_id" class="form-control"  style="margin-right: 5px;">
-							@foreach($businessCategory as $busines)
-	              	<option value="{{$busines->business->business_id}}">{{$busines->business->name}}</option>
-              @endforeach
-            </select>
-          </div>
--->
 
 				<div class="row">
 
