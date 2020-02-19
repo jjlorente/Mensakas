@@ -13,10 +13,10 @@ class Product_has_category extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function product(){
-      return $this->belongsTo('App\Product','fk_product_id');
+      return $this->belongsToMany('App\Product','fk_product_id');
     }
     public function product_categories(){
-      return $this->belongsTo('App\Product_category','fk_product_category_id');
+      return $this->belongsToMany('App\Product_category','fk_product_category_id');
     }
 
     public function scopeBuscarpor($query, $tipo, $buscar) {

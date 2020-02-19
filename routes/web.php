@@ -53,3 +53,11 @@ Route::post('/simulatorestadoorder', 'SimulatorController@estadoOrder')->name('s
 //business
 Route::get('/selectbusiness', 'SimulatorBusinessController@index')->name('selectbusiness');
 Route::get('/showorderbusiness', 'SimulatorBusinessController@showOrders')->name('showorderbusiness');
+
+
+
+
+
+//ruta simulator mensaka
+Route::get('/simulatorMensaka', 'SimulatorMensakaController@index')->name('simulatorMensaka');
+Route::get('/simulatorMensakaEdit', 'SimulatorMensakaController@edit')->name('simulatorMensakaEdit');

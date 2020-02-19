@@ -23,6 +23,9 @@ class Order extends Model
     public function payment() {
       return $this->hasOne('App\Payment','fk_order_id');
     }
+    public function consumer() {
+      return $this->hasMany('App\Consumer','fk_consumers_id');
+    }
     public function scopeBuscarpor($query, $tipo, $buscar) {
       if ( ($tipo) && ($buscar) ) {
         if (($tipo) == 'status') {
