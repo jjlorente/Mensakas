@@ -14,22 +14,30 @@ use Illuminate\Http\Request;
 class SimulatorMensakaController extends Controller {
     //
     public function index(Request $request) {
-        $orders = Order::orderBy('fk_consumers_id','ASC');
-        $consumers = Consumer::get();
-        $bussines = Business::get();
         $mensaka = Mensaka::get();
         return view( 'simulatorMensaka.index', compact('orders','consumers','business','mensaka') );
     }
 
-    public function edit(Request $request){
+    public function pedido(Request $request){
+        $id_mensaka = $request->get('mensakaID');
+
+        $orders = Order::orderBy('fk_consumers_id','ASC')->get();
+        $consumers = Consumer::get();
+        $business = Business::get();
+        $mensakas = Mensaka::where('mensaka_id', $id_mensaka)->get();
+        return view( 'simulatorMensaka.pedidoMensaka', compact('orders','consumers','business','mensakas') );
+
+    }
+
+    public function accept(Request $request){
         $id = $request->get('order_id');
 
         $order = DB::table('orders')->where('order_id', $id)->update(["status" => 1]);
-        $orders = Order::orderBy('fk_consumers_id','ASC')->get();
+        $orders = Order::where('order_id', $id)->get();
         $consumers = Consumer::get();
-        $bussines = Business::get();
+        $business = Business::get();
         $mensaka = Mensaka::get();
-        return view( 'simulatorMensaka.index', compact('orders','consumers','business','mensaka') );
+        return view( 'simulatorMensaka.acceptOrder', compact('orders','consumers','business','mensaka') );
 
     }
 

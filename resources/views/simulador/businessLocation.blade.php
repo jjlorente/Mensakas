@@ -13,7 +13,7 @@
 		<form method="GET" action="{{ route('simulatorproduct') }}" role="form" style="width: 50%;align-content: center;margin: 0 auto;">
 			<select name="business" class="form-control"  style="margin-right: 5px;">
 			@foreach($business as $busines)
-				<option value="{{$busines->business_id}}">{{$busines->name}} 
+				<option value="{{$busines->business_id}}">{{$busines->name}}
 					@if (empty($busines->business_categories))
 			      		- Categoria no especificada
 			    	@else
@@ -27,7 +27,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<input type="submit"  value="Siguiente" class="btn btn-success btn-block">
 					<a href="{{  route('simulator') }}" class="btn btn-info btn-block" >Atrás</a>
-				</div>	
+				</div>
 			</div>
 		</form>
 	</div>

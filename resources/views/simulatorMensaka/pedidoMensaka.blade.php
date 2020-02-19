@@ -28,7 +28,8 @@
          <th style="border-radius: 10px;">OrderID</th>
          <th style="border-radius: 10px;">Status</th>
          <th style="border-radius: 10px;">Products</th>
-         <th style="border-radius: 10px;">Business</th>
+         <th style="border-radius: 10px;">Business Name</th>
+         <th style="border-radius: 10px;">Business Address</th>
          <th style="border-radius: 10px;">Consumer</th>
          <th style="border-radius: 10px;">Notice</th>
          <th style="border-radius: 10px;">Accept</th>
@@ -54,7 +55,21 @@
                       @endforeach
                     </td>
 
-                    <td>{{ $order->order_has_products}}</td>
+                    <td>
+                      @foreach ($business as $bussine)
+                        @if ($bussine->business_id == $order->fk_business_id)
+                          {{ $bussine->name }}
+                        @endif
+                      @endforeach
+                    </td>
+
+                    <td>
+                      @foreach ($business as $bussine)
+                        @if ($bussine->business_id == $order->fk_business_id)
+                          {{ $bussine->address }}
+                        @endif
+                      @endforeach
+                    </td>
 
                     <td>
                       @foreach ($consumers as $consumer)
@@ -65,7 +80,7 @@
                     </td>
                     <td>{{ $order->description }}</td>
                     <td>
-                      <form class="" action="{{ route('simulatorMensakaEdit') }}" method="get">
+                      <form class="" action="{{ route('simulatorMensakaAccept') }}" method="get">
                         <input type="hidden" name="order_id" value="{{$order->order_id}}">
                         <button class="btn btn-success btn-block" type="submit">ACCEPT</button>
                       </form>
@@ -76,49 +91,7 @@
           @endforeach
         </tbody>
 
-        <tbody>
-          <td colspan="8"></td>
-        </tbody>
 
-        <tbody>
-          @foreach($orders as $order)
-            @if( $order->status==1 and )
-            @php $price = 0 @endphp
-            <tr>
-                <td>{{ $order->order_id }}</td>
-                @if($order->status==2)
-                  <td style="background-color: #ACECC3; ">Delivered</td>
-                @elseif($order->status==1)
-                  <td style="background-color: #ACECC3; ">On way</td>
-                @else
-                  <td style="background-color: #ECACB2; ">Undelivered</td>
-                @endif
-                <td>
-                  @foreach ( $order->order_has_product as $tabla_producto )
-                      {{ $tabla_producto->product->name }}<br>
-                  @endforeach
-                </td>
-
-                <td>{{ $order->order_has_products}}</td>
-
-                <td>
-                  @foreach ($consumers as $consumer)
-                      @if ($consumer->consumer_id == $order->fk_consumers_id)
-                          {{ $consumer->first_name }} {{ $consumer->last_name }}
-                      @endif
-                  @endforeach
-                </td>
-                <td>{{ $order->description }}</td>
-                <td>
-                  <form class="" action="{{ route('simulatorMensakaEdit') }}" method="get">
-                    <input type="hidden" name="order_id" value="{{$order->order_id}}">
-                    <button class="btn btn-success btn-block" type="submit">ACCEPT</button>
-                  </form>
-                </td>
-            </tr>
-
-        @endif
-      @endforeach
 
         @else
           <tr>
@@ -127,6 +100,9 @@
         @endif
       </tbody>
      </table>
+
+
+
 
 
 	</section>
