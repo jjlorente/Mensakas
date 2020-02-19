@@ -19,12 +19,7 @@ class SimulatorController extends Controller
 
     public function orderIndex()
     {
-        error_log('ENtro en orderindex');
-        $order = session('order');
-        $products = session('products');
-        $quantities = session('quantities');
-        $arrayProducts = session('arrayProducts');
-         $business = session('business');
+
         return view('simulador.orderIndex',compact('order','products','quantities','arrayProducts','business'));
     }
     public function estadoOrder(Request $request)
@@ -56,7 +51,7 @@ class SimulatorController extends Controller
             }
         }
 
-        return redirect()->route('simulatororder')->with('order', $order)->with('products', $products)->with('quantities' ,$quantities )->with('arrayProducts',$arrayProducts)->with('business',$business);
+        return view('simulador.orderIndex',compact('order','products','quantities','arrayProducts','business'));
     }
 
     public function product(Request $request){
@@ -68,12 +63,6 @@ class SimulatorController extends Controller
         return view('simulador.businessProduct',compact('products','consumer','business'));
     }
 
-    public function businessLocation(){
-        $consumer = session('consumer');
-        $business = session('business');
-        $location = session('location');
-        return view('simulador.businessLocation',compact('consumer','business','location'));
-    }
      public function store(Request $request)
     {
         $this->validate($request,[ 'first_name'=>'required', 'phone'=>'required', 'mail'=>'required', 'address'=>'required', 'city'=>'required','target' => 'required']);
@@ -82,7 +71,7 @@ class SimulatorController extends Controller
         $business = Business::where('location', $location)->get();
         $consumer = Consumer::create($request->all());
 
-        return redirect()->route('simulator2')->with('consumer', $consumer)->with('business', $business)->with('location' ,$location );
+        return view('simulador.businessLocation',compact('consumer','business','location'));
     }
 
 }

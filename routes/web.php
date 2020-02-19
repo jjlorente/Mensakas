@@ -41,13 +41,10 @@ Route::get('/simulator', 'SimulatorController@index')->name('simulator');
 Route::post('/simulatorbusiness', 'SimulatorController@store')->name('simulatorbusiness');
 //ruta seleccion business
 Route::get('/simulator2', 'SimulatorController@businessLocation')->name('simulator2');
-
 //ruta carrito compra
 Route::get('/simulatorproduct', 'SimulatorController@product')->name('simulatorproduct');
-//hola
 Route::post('/simulatorstoreproducts', 'SimulatorController@storeProduct')->name('simulatorstoreproducts');
 Route::get('/simulatororder', 'SimulatorController@orderIndex')->name('simulatororder');
-
 //{{ \App\User::where(['name' => $posts->username])->pluck('avatar')->first() }}
 Route::post('/simulatorestadoorder', 'SimulatorController@estadoOrder')->name('simulatorestadoorder');
 

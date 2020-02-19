@@ -23,8 +23,9 @@
                     <tr id="product0">
                         <td>
                             <select name="products[]" class="form-control">
+                                <option selected>- Choice product -</option>
                                 @foreach ($products as $product)
-                                    <option value="{{ $product->product_id }}" id="{{$product->price}}" selected>
+                                    <option value="{{ $product->product_id }}" id="{{$product->price}}">
                                         {{ $product->name }} (${{ number_format($product->price, 2) }})
                                     </option>
                                 @endforeach

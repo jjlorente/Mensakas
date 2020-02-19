@@ -55,11 +55,8 @@
 						<h6 style="width: 15%; margin-top: 10px;">Location: </h6>
 						<input type="text" name="city" id="city" class="form-control input-sm" placeholder="Location">
 					</div>
-
-					<div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
-						<h6 style="width: 15%; margin-top: 10px;">Credit Card: </h6>
-						<input type="text" name="target" id="target" class="form-control input-sm" placeholder="Credit Card">
-					</div>
+						<input type="hidden" name="target" id="target" class="form-control input-sm" value="0">
+					
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<input type="submit"  value="Siguiente" class="btn btn-success btn-block">
