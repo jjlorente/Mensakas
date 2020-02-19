@@ -33,11 +33,11 @@ class SimulatorController extends Controller
         $products = $request->get('products', []);
         $quantities = $request->get('quantities', []);
 
-        $this->validate($request,[ 'status'=>'required', 'fk_consumers_id'=>'required']);
+        $this->validate($request,[ 'status'=>'required', 'fk_consumers_id'=>'required','fk_business_id']);
         $order = Order::create($request->all());
 
         $consumer = $request->get('fk_consumers_id');
-        $businessID = $request->get('business_id');
+        $businessID = $request->get('fk_business_id');
         $business = Business::where('business_id',$businessID)->first();
         for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {

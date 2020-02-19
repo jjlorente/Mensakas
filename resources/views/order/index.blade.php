@@ -15,6 +15,7 @@
               <select name="tipo" class="form-control"  style="margin-right: 5px;">
                 <option value="order_id">OrderID</option>
                 <option value="fk_consumers_id">ConsumerID</option>
+                <option value="fk_business_id">BusinessID</option>
                 <option value="status">Status</option>
               </select>
               <input name="buscarpor" type="search" class="form-control"  style="margin-right: 5px;">
@@ -22,8 +23,7 @@
             </form>
           </div>
           <div>
-            <a href="{{route('home')}}" type="button" class="btn btn-primary"> Return Admin Panel</a>
-            <a type="submit" href="{{ route('mensaka.create') }}"  class="btn btn-success" style="margin-right: 27px; width: 300px;">Add New Mensaka</a>
+            <a href="{{route('home')}}" type="button" class="btn btn-primary" style="margin-right: 10px;"> Return Admin Panel</a>
           </div>
         </div>
       </div>
@@ -32,6 +32,7 @@
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
        <th style="border-radius: 10px;">Consumer</th>
        <th style="border-radius: 10px;">OrderID</th>
+       <th style="border-radius: 10px;">BusinessID</th>
        <th style="border-radius: 10px;">Status</th>
        <th style="border-radius: 10px;">Products</th>
        <th style="border-radius: 10px;">Notice</th>
@@ -46,6 +47,7 @@
           <tr>
             <td>{{ $order->fk_consumers_id }}</td>
             <td>{{ $order->order_id }}</td>
+            <td>{{ $order->fk_business_id }}</td>
             @if($order->status==2)
               <td style="background-color: #ACECC3; ">Delivered</td>
             @elseif($order->status==1)

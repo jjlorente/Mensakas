@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $table = 'orders';
     protected $primaryKey = 'order_id';
-    protected $fillable = ['fk_consumers_id','status','description','created_at','updated_at'];
+    protected $fillable = ['fk_consumers_id','status','description','created_at','updated_at','fk_business_id'];
 	  protected $cascadeDeletes = ['projectTransactions'];
 
     public function order_has_pack() {

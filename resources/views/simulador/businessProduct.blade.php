@@ -56,7 +56,7 @@
         <input class="btn btn-primary" type="submit" value="Siguiente paso" >
     </div>
     <input type="hidden" name="fk_consumers_id" value="{{$consumer[0]->consumer_id}}">
-    <input type="hidden" name="business_id" value="{{$business[0]->business_id}}">
+    <input type="hidden" name="fk_business_id" value="{{$business[0]->business_id}}">
     <input type="hidden" name="status" value="0">
 </form>
 

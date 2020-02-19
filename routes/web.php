@@ -48,3 +48,8 @@ Route::get('/simulatororder', 'SimulatorController@orderIndex')->name('simulator
 //{{ \App\User::where(['name' => $posts->username])->pluck('avatar')->first() }}
 Route::post('/simulatorestadoorder', 'SimulatorController@estadoOrder')->name('simulatorestadoorder');
 
+
+
+//business
+Route::get('/selectbusiness', 'SimulatorBusinessController@index')->name('selectbusiness');
+Route::get('/showorderbusiness', 'SimulatorBusinessController@showOrders')->name('showorderbusiness');
