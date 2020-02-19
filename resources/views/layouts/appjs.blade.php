@@ -21,6 +21,27 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript">
+    $(document).ready(function(){
+        let row_number = 1;
+        
+        $("#add_row").click(function(e){
+          e.preventDefault();
+          let new_row_number = row_number - 1;
+          $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
+          $('#products_table').append('');
+          row_number++;
+        });
+
+        $("#delete_row").click(function(e){
+          e.preventDefault();
+          if(row_number > 1){
+            $("#product" + (row_number - 1)).html('');
+            row_number--;
+          }
+        });
+    });
+</script>
 </head>
 <body >
     <div id="app" >

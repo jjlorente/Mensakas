@@ -24,9 +24,14 @@ class SimulatorController extends Controller
         $products = session('products');
         $quantities = session('quantities');
         $arrayProducts = session('arrayProducts');
-        return view('simulador.orderIndex',compact('order','products','quantities','arrayProducts'));
+         $business = session('business');
+        return view('simulador.orderIndex',compact('order','products','quantities','arrayProducts','business'));
     }
-
+    public function estadoOrder(Request $request)
+    {
+        $order_id = $request->get('order_id');
+        return view('simulador.estadoOrder',compact('order_id'));
+    }
      public function storeProduct(Request $request)
     {
         $arrayProducts = [];
@@ -37,7 +42,8 @@ class SimulatorController extends Controller
         $order = Order::create($request->all());
 
         $consumer = $request->get('fk_consumers_id');
-
+        $businessID = $request->get('business_id');
+        $business = Business::where('business_id',$businessID)->first();
         for ($product=0; $product < count($products); $product++) {
             if ($products[$product] != '') {
                 $producto = Product::where('product_id', $products[$product])->first();
@@ -50,7 +56,7 @@ class SimulatorController extends Controller
             }
         }
 
-        return redirect()->route('simulatororder')->with('order', $order)->with('products', $products)->with('quantities' ,$quantities )->with('arrayProducts',$arrayProducts);
+        return redirect()->route('simulatororder')->with('order', $order)->with('products', $products)->with('quantities' ,$quantities )->with('arrayProducts',$arrayProducts)->with('business',$business);
     }
 
     public function product(Request $request){

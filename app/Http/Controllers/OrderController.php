@@ -11,10 +11,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $orders=Order::orderBy('fk_consumers_id','ASC')->paginate(5);
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+        if ($tipo && $buscar) {
+            $orders = Order::buscarpor($tipo, $buscar)->orderBy('fk_consumers_id','ASC')->get();
+        }else{
+            $orders = Order::orderBy('fk_consumers_id','ASC')->paginate(5);
+        } 
         return view('order.index',compact('orders'));
     }
 
@@ -89,10 +95,6 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $rules = [
-           'status'=>'boolean',
-       ];
-        $this->validate($request,$rules);
         $this->validate($request,[ 'description'=>'required' , 'status'=>'required']);
 
         Order::find($id)->update($request->all());

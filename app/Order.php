@@ -23,4 +23,15 @@ class Order extends Model
     public function payment() {
       return $this->hasOne('App\Payment','fk_order_id');
     }
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+      if ( ($tipo) && ($buscar) ) {
+        if (($tipo) == 'status') {
+            if (($buscar)=='false') {
+                return $query->where($tipo,'=',0);
+            }
+            return $query->where($tipo,'>',0);
+        }
+        return $query->where($tipo,'like',"%$buscar%");
+      }
+    }
 }

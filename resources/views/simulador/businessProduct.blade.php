@@ -1,11 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.appjs')
 @section('content')
+   
+     <h2 style="text-align: center;">Business {{ $business[0]->name }}</h2>
 	<form action="{{ route('simulatorstoreproducts') }}" method="POST">
     @csrf
-    <div class="card">
+
+    <div class="card" style="width: 90%; margin: 0 auto;">
         <div class="card-header" style="display: flex; flex-direction: row; justify-content: space-between;">
             <h3>Products</h3>
-            <h3 style="margin-right: 10px;">Price: <span id="precio">0<span></h3>
+            <!--<h3 style="margin-right: 10px;">Price: <span id="precio">0<span></h3>-->
         </div>
 
         <div class="card-body">
@@ -21,7 +24,7 @@
                         <td>
                             <select name="products[]" class="form-control">
                                 @foreach ($products as $product)
-                                    <option value="{{ $product->product_id }}" selected>
+                                    <option value="{{ $product->product_id }}" id="{{$product->price}}" selected>
                                         {{ $product->name }} (${{ number_format($product->price, 2) }})
                                     </option>
                                 @endforeach
@@ -48,10 +51,11 @@
             </div>
         </div>
     </div>
-    <div style=" text-align: center;">
-        <input class="btn btn-danger" type="submit" value="Hacer pedido" >
+    <div style=" text-align: center; margin-top: 10px;">
+        <input class="btn btn-primary" type="submit" value="Siguiente paso" >
     </div>
     <input type="hidden" name="fk_consumers_id" value="{{$consumer[0]->consumer_id}}">
+    <input type="hidden" name="business_id" value="{{$business[0]->business_id}}">
     <input type="hidden" name="status" value="0">
 </form>
 
