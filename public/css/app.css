@@ -10926,82 +10926,37 @@ a.text-dark:focus {
     margin: 5px;
     overflow: hidden;
     position: relative;
-    background-color: #8323D1;
-    background-size: 450px;
+    background-size: 200px;
     background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     border-radius: 5px;
+    text-align: center;
 }
 .item_panel:hover{
-  box-shadow: 0 0 30px -5px black;
-  cursor: pointer;
+    box-shadow: inset 0 0 30px -5px black;
 }
-.opcion_user{
-  background-image: url('/images/USERS.jpg');
+.opciones_admin_panel a{
+  text-decoration: none;
 }
-.opcion_business{
-  background-image: url('/images/BUSINESS.jpg');
+.item_panel span{
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    position: static;
+    top: 79%;
+    color: white;
+    border-radius: 5px;
+    background-color: #5c2583;
+    padding: 6px;
+    font-size: 30px;
 }
-.opcion_mensaka{
-  background-image: url('/images/MENSAKAS.jpg');
-  background-size: 520px;
-  background-position: left;
-}
-.opcion_order{
-  background-image: url('/images/ORDER.jpg');
-}
-.opcion_deliver{
-  background-image: url('/images/DELIVER.jpg');
-}
-.opcion_menu{
-  background-image: url('/images/MENU.jpg');
-}
-.opcion_conusmer{
-  background-image: url('/images/CONSUMER.jpg');
+.item_panel img{
+    height: 70%;
+    width: auto;
+    margin-top: 5%;
 }
 
-.item_panel h1{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: white;
-  z-index: 2;
-  transform: translate(-50%, -50%) scale(1);
-  transition: all 600ms cubic-bezier(1,0,0,1);
-  border: 2px solid white;
-  border-radius: 5px;
-  background: black;
-  padding: 6px;
-}
-.item_panel:hover h1{
-  transform: translate(-50%, -50%) scale(0);
-  z-index: -2;
-}
-
-.item_panel::before , .item_panel::after{
-  content: '';
-  width: 500px;
-  height: 500px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: black;
-  opacity: 0.6;
-  transition: all 300ms;
-  border: 4px solid white;
-}
-.item_panel::before{
-  transform: rotate(45deg) translateY(-280px) translateX(-80px);
-}
-.item_panel::after{
-  transform: rotate(45deg) translateY(230px) translateX(-120px);
-}
-.item_panel:hover::before{
-  transform: rotate(45deg) translateY(-520px) translateX(-80px);
-}
-.item_panel:hover::after{
-  transform: rotate(45deg) translateY(460px) translateX(-120px);
-}
 
 
 /*background-color:#D18EEE;
