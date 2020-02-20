@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Business;
+use App\Business_timetable;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
@@ -22,7 +23,7 @@ class BusinessController extends Controller
         }else{
             $business = Business::orderBy('name','ASC')->paginate(5);
         }
-        
+
         return view('business.index',compact('business'));
     }
 

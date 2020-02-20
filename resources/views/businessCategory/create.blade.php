@@ -33,8 +33,8 @@
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
 						<h6 style="width: 10%;margin-top: 10px;">Business: </h6>
 						<select name="fk_business_id" id="fk_business_id" class="form-control"  style="margin-right: 5px;">
-							@foreach($businessCategory as $busines)
-	              	<option value="{{$busines->business->business_id}}">{{$busines->business->name}}</option>
+							@foreach($business as $busines)
+	              	<option value="{{$busines->business_id}}">{{$busines->name}}</option>
               @endforeach
             </select>
           </div>

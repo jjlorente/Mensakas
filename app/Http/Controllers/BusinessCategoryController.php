@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Business_category;
+use App\Business;
 use Illuminate\Http\Request;
 
 class BusinessCategoryController extends Controller
@@ -35,7 +36,8 @@ class BusinessCategoryController extends Controller
     {
         //
         $businessCategory = Business_category::all();
-        return view('businessCategory.create',compact('businessCategory'));
+        $business = Business::all();
+        return view('businessCategory.create',compact('businessCategory','business'));
     }
 
     /**

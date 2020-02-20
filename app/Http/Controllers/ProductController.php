@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Product;
 use App\Business;
+use App\Product_category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +16,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         $buscar = $request->get('buscarpor');
         $tipo = $request->get('tipo');
 
@@ -23,8 +24,8 @@ class ProductController extends Controller
             $products = Product::buscarpor($tipo, $buscar)->orderBy('fk_business_id','ASC')->get();
         }else{
             $products = Product::orderBy('fk_business_id','ASC')->paginate(5);
-        } 
-        return view('product.index',compact('products')); 
+        }
+        return view('product.index',compact('products'));
     }
 
     /**
