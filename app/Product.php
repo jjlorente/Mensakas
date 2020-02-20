@@ -21,6 +21,11 @@ class Product extends Model
       return $this->hasOne('App\Product_has_product_category','fk_product_id');
     }
 
+    public function product_category(){
+      return $this->belongsToMany('App\Product_category');
+    }
+
+
 
     public function scopeBuscarpor($query, $tipo, $buscar) {
       if ( ($tipo) && ($buscar) ) {

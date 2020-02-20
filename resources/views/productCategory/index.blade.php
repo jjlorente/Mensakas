@@ -44,7 +44,12 @@
           <tr>
             <td>{{$productesCategory->name}}</td>
             <td>
-              {{ $productesCategory->product }}
+
+              @foreach($relacional as $fkcategory)
+                  @if($fkcategory->fk_product_category_id==$productesCategory->product_category_id)
+                      {{ \App\Product::where([ 'product_id' => $fkcategory->fk_product_id ])->pluck('name')->first() }}
+                  @endif
+              @endforeach
             </td>
             <td><a href="{{action('ProductCategoryController@edit', $productesCategory->product_category_id)}}" class="btn btn-primary">Edit</a></td>
             <td><a href="{{ route('productCategory.confirm', $productesCategory->product_category_id ) }}" class="btn btn-danger btncolorblanco"> Delete </a></td>

@@ -30,6 +30,14 @@
 						<input type="text" name="name" id="name" class="form-control input-sm" placeholder="Name">
 					</div>
 
+					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
+						<h6 style="width: 10%;margin-top: 10px;">Business: </h6>
+						<select name="fk_product_id" id="fk_product_id" class="form-control"  style="margin-right: 5px;">
+							@foreach($productos as $product)
+	              	<option value="{{$product->product_id}}">{{$product->name}}</option>
+              @endforeach
+            </select>
+          </div>
 
 				<div class="row">
 

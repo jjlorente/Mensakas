@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Product_category;
 use App\Product;
+use App\Product_has_category;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
@@ -23,8 +24,9 @@ class ProductCategoryController extends Controller
         }else{
             $productCategories = Product_category::orderBy('name','ASC')->paginate(5);
         }
-        $product = Product::get();
-        return view('productCategory.index',compact('productCategories','product'));
+        $relacional = Product_has_category::get();
+        $productos = Product::get();
+        return view('productCategory.index',compact('productCategories','relacional','productos'));
     }
 
     /**
@@ -36,7 +38,8 @@ class ProductCategoryController extends Controller
     {
         //
         $productCategory = Product_category::all();
-        return view('productCategory.create',compact('productCategory'));
+        $productos = Product::all();
+        return view('productCategory.create',compact('productCategory','productos'));
     }
 
     /**
@@ -55,8 +58,13 @@ class ProductCategoryController extends Controller
         $this->validate($request, $rules);
         */
         $this->validate($request,[ 'name'=>'required']);
+        $product_id = $request->get('fk_product_id');
 
-        Product_category::create($request->all());
+        $category = Product_category::create($request->all());
+        $relacion = new Product_has_category;
+        $relacion->fk_product_id = $product_id;
+        $relacion->fk_product_category_id = $category->product_category_id;
+        $relacion->save();
         return redirect()->route('productCategory.index')->with('notice','Record created successfully');
     }
 

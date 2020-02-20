@@ -12,10 +12,10 @@ class Product_has_category extends Model
 
     protected $cascadeDeletes = ['projectTransactions'];
 
-    public function product(){
+    public function has_product(){
       return $this->belongsToMany('App\Product','fk_product_id');
     }
-    public function product_categories(){
+    public function has_product_categories(){
       return $this->belongsToMany('App\Product_category','fk_product_category_id');
     }
 
