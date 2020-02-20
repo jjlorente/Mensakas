@@ -48,12 +48,14 @@
             <td>{{ $order->fk_consumers_id }}</td>
             <td>{{ $order->order_id }}</td>
             <td>{{ $order->fk_business_id }}</td>
-            @if($order->status==2)
+            @if($order->status==3)
               <td style="background-color: #ACECC3; ">Delivered</td>
-            @elseif($order->status==1)
+            @elseif($order->status==2)
               <td style="background-color: #ACECC3; ">On way</td>
+            @elseif($order->status==1)
+              <td style="background-color: #ACECC3; ">Preparing order</td>
             @else
-              <td style="background-color: #ECACB2; ">Undelivered</td>
+              <td style="background-color: #ECACB2; ">Pending petition</td>
             @endif
             <td>
               @foreach ( $order->order_has_product as $tabla_producto )

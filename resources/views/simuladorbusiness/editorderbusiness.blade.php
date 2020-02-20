@@ -23,34 +23,25 @@
 			</div>
 
 
-			<form method="POST" action="{{ route('order.update',$order->order_id) }}"  role="form" style="width: 50%;align-content: center;margin: 0 auto;">
+			<form method="get" action="{{ route('updateorder') }}"  role="form" style="width: 50%;align-content: center;margin: 0 auto;">
 				{{ csrf_field() }}
-				<input name="_method" type="hidden" value="PATCH">
-
-
+				<input type="hidden" name="id" value="{{$order->order_id}}">
+				<input type="hidden" name="business_id" value="{{$order->fk_business_id}}">
 					<div class="form-group" style="display: flex; flex-direction: row;">
 						<h6 style="width: 10%; margin-top: 10px;">Status: </h6>
 						<div class="from-group">
-							@if($order->status==3)
-							  <input type="radio" name="status" value="0"> Pending petition <br>
-							  <input type="radio" name="status" value="1">Preparing order<br>
-							  <input type="radio" name="status" value="2" >  On way <br>
-							  <input type="radio" name="status" value="3" checked> Delivered <br>
-							@elseif($order->status==2)
+							@if($order->status==2)
 							  <input type="radio" name="status" value="0"> Pending petition <br>
 							  <input type="radio" name="status" value="1" >Preparing order<br>
 							  <input type="radio" name="status" value="2" checked>  On way <br>
-							  <input type="radio" name="status" value="3" > Delivered <br>
 							@elseif($order->status==1)
 							  <input type="radio" name="status" value="0"> Pending petition <br>
 							  <input type="radio" name="status" value="1" checked>Preparing order<br>
 							  <input type="radio" name="status" value="2">  On way <br>
-							  <input type="radio" name="status" value="3" > Delivered <br>
 							@else
 								<input type="radio" name="status" value="0" checked> Pending petition <br>
 								<input type="radio" name="status" value="1">Preparing order<br>
 								<input type="radio" name="status" value="2" > On way <br>
-								<input type="radio" name="status" value="3" > Delivered <br>
 							@endif
 						</div>
 
@@ -66,7 +57,7 @@
 
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<input type="submit"  value="Actualizar" class="btn btn-success btn-block">
-						<a href="{{ route('order.index') }}" class="btn btn-info btn-block" >Atrás</a>
+						<a href="{{ route('showorderbusiness') }}" class="btn btn-info btn-block" >Atrás</a>
 					</div>
 
 				</div>

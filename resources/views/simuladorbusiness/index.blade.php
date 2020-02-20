@@ -15,10 +15,11 @@
 			@foreach($business as $busines)
 				<option value="{{$busines->business_id}}">{{$busines->name}} 
 					@if (empty($busines->business_categories))
-			      		- Categoria no especificada
+			      		// Categoria no especificada
 			    	@else
-			    		- {{$busines->business_categories->name}}
+			    		// Categoria: {{$busines->business_categories->name}}
 			   		@endif
+			   			// ID: {{$busines->business_id}}
 		   		</option>
 			@endforeach
 			</select>

@@ -18,58 +18,53 @@
                 <th>Price</th>
             </tr>
         </thead>
-            <tbody>
-        		<?php  
-        			$sumTotal = 0;
-        		?>
-        		
-            	@for ($i= 0; $i < count($arrayProducts); $i++)
-                  <tr>
-                  	<td>
-                          {{ $arrayProducts[$i]->name }} (${{ number_format($arrayProducts[$i]->price, 2) }})
-                  	</td>
-                  	<td>
-                          {{ $quantities[$i] }}
-                  	</td>
-                  	<td>
-                          {{ number_format($arrayProducts[$i]->price, 2)*$quantities[$i] }}
-                  	</td>
-                  </tr>
-                  <?php  
-                  	$prodSum = number_format($arrayProducts[$i]->price, 2)*$quantities[$i];
-                  	$sumTotal = $sumTotal + $prodSum;
-                  ?>
-                  
-            	@endfor
-            </tbody>
+        <tbody>
+    		<?php  
+    			$sumTotal = 0;
+    		?>
+    		
+        	@for ($i= 0; $i < count($arrayProducts); $i++)
+            <tr>
+            	<td>
+                    {{ $arrayProducts[$i]->name }} (${{ number_format($arrayProducts[$i]->price, 2) }} c/u)
+            	</td>
+            	<td>
+                    {{ $quantities[$i] }}
+            	</td>
+            	<td>
+                    {{ number_format($arrayProducts[$i]->price, 2)*$quantities[$i] }}$
+            	</td>
+            </tr>
+    
+            <?php  
+            	$prodSum = number_format($arrayProducts[$i]->price, 2)*$quantities[$i];
+            	$sumTotal = $sumTotal + $prodSum;
+            ?>
+              
+        	@endfor
+           <tr>
+              <td colspan="2"></td>
+              <td><h5>Total Price: <?php echo $sumTotal; ?>$</h5></td>
+            </tr>
+        </tbody>
      	
    		</table>
-   		<div style="width: 80%; margin-top: 5px; text-align: right;">
-   			<h3 style="position: relative; margin: 0 auto;">
-          <b>
-   				Total Price: 
-   				     <?php  	
-            		echo $sumTotal;
-            	?>$
-          </b>
-        </h3>
-        
-   		</div>
-      <div style="width: 80%; text-align: center; margin: 0 auto;">
+
+      <div style="width: 80%; margin: 0 auto; text-align: center; margin-top: 20px;">
      		<input type="hidden" name="order_id" value="{{$order->order_id}}">
-        <div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
-          <h6 style="width: 15%; margin-top: 10px; ">Credit card: </h6>
-          <input type="text" name="target" class="form-control input-sm" placeholder="Credit card">
+        <div class="form-group" style="display: flex; flex-direction: row; ">
+          <h6 style="width: 15%; margin-top: 10px;">Credit card: </h6>
+          <input type="text" name="target" class="form-control input-sm" placeholder="Credit card" >
         </div>
 
-        <div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
-          <h6 style="width: 15%; margin-top: 10px;">Fecha caducidad: </h6>
-          <input maxlength="4" type="text" name="token" id="token" class="form-control input-sm" placeholder="Fecha caducidad">
+        <div class="form-group" style="display: flex; flex-direction: row; ">
+          <h6 style="width: 15%; margin-top: 10px;">Date of expiry: </h6>
+          <input maxlength="5" type="text" name="token" id="token" class="form-control input-sm" placeholder="Fecha caducidad">
         </div>
 
-        <div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
-          <h6 style="width: 15%; margin-top: 10px;">Control digit: </h6>
-          <input maxlength="3" type="text" name="digit" id="digit" class="form-control input-sm" placeholder="Control digit">
+        <div class="form-group" style="display: flex; flex-direction: row;">
+          <h6 style="width: 15%; margin-top: 10px;">CVV: </h6>
+          <input maxlength="4" type="text" name="digit" id="digit" class="form-control input-sm" placeholder="Control digit">
         </div>
      </div>
      <div style=" width: 100%; text-align: center;">

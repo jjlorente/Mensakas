@@ -76,7 +76,8 @@
                 <div class="links">
                     <a href="{{ route('login') }}">Login</a>
                     <a href="{{ route('register') }}">Register</a>
-                    <a href="simulator">Simulador</a>
+                    <a href="simulator">Simulador Pedido</a>
+                    <a href="selectbusiness">Simulador Business</a>
                     <a href="simulatorMensaka">Simulador Mensaka</a>
                 </div>
 
