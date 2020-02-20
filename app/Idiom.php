@@ -13,6 +13,6 @@ class Idiom extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function product(){
-      return $this->belongsTo('App\Product');
+      return $this->belongsTo('App\Product','fk_product_id');
     }
 }

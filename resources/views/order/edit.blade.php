@@ -31,12 +31,26 @@
 					<div class="form-group" style="display: flex; flex-direction: row;">
 						<h6 style="width: 10%; margin-top: 10px;">Status: </h6>
 						<div class="from-group">
-							@if($order->status==1)
-							  <input type="radio" name="status" value="0"> Undelivered <br>
-							  <input type="radio" name="status" value="1" checked> Delivered <br>
+							@if($order->status==3)
+							  <input type="radio" name="status" value="0"> Pending petition <br>
+							  <input type="radio" name="status" value="1">Preparing order<br>
+							  <input type="radio" name="status" value="2" >  On way <br>
+							  <input type="radio" name="status" value="3" checked> Delivered <br>
+							@elseif($order->status==2)
+							  <input type="radio" name="status" value="0"> Pending petition <br>
+							  <input type="radio" name="status" value="1" >Preparing order<br>
+							  <input type="radio" name="status" value="2" checked>  On way <br>
+							  <input type="radio" name="status" value="3" > Delivered <br>
+							@elseif($order->status==1)
+							  <input type="radio" name="status" value="0"> Pending petition <br>
+							  <input type="radio" name="status" value="1" checked>Preparing order<br>
+							  <input type="radio" name="status" value="2">  On way <br>
+							  <input type="radio" name="status" value="3" > Delivered <br>
 							@else
-								<input type="radio" name="status" value="0" checked> Undelivered <br>
-								<input type="radio" name="status" value="1" > Delivered <br>
+								<input type="radio" name="status" value="0" checked> Pending petition <br>
+								<input type="radio" name="status" value="1">Preparing order<br>
+								<input type="radio" name="status" value="2" > On way <br>
+								<input type="radio" name="status" value="3" > Delivered <br>
 							@endif
 						</div>
 

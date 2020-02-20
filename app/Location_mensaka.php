@@ -14,6 +14,6 @@ class Location_mensaka extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function mensakas(){
-      return $this->belongsTo('App\Mensaka');
+      return $this->belongsTo('App\Mensaka','fk_mensakas_id');
     }
 }

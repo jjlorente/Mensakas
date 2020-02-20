@@ -39,7 +39,12 @@
 						<h6 style="width: 10%;margin-top: 10px;">Email: </h6>
 						<input type="text" name="mail" id="mail" class="form-control input-sm" placeholder="Email">
 					</div>
-				
+
+					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
+						<h6 style="width: 10%;margin-top: 10px;">Location: </h6>
+						<input type="text" name="location" id="location" class="form-control input-sm" placeholder="Location">
+					</div>
+
 					<div class="form-group" style="display: flex; flex-direction: row;justify-content: space-between; ">
 						<h6 style="width: 10%;margin-top: 10px;">Zip Code: </h6>
 						<input type="text" name="zip_code" id="zip_code" class="form-control input-sm" placeholder="Zip Code">

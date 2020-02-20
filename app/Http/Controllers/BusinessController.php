@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Business;
+use App\Business_timetable;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
@@ -12,11 +13,18 @@ class BusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $business=Business::orderBy('name','ASC')->paginate(5);
-        return view('business.index',compact('business')); 
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+        if ($tipo && $buscar) {
+            $business = Business::buscarpor($tipo, $buscar)->orderBy('name','ASC')->get();
+        }else{
+            $business = Business::orderBy('name','ASC')->paginate(5);
+        }
+
+        return view('business.index',compact('business'));
     }
 
     /**
@@ -39,7 +47,7 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         //
-        
+
             $rules = [
                 'phone' => 'numeric',
                 'zip_code'=> 'numeric',
@@ -48,10 +56,10 @@ class BusinessController extends Controller
                 'lat' => 'numeric',
                 'lon' => 'numeric',
             ];
- 
+
         $this->validate($request, $rules);
-        $this->validate($request,[ 'name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
-        
+        $this->validate($request,[ 'name'=>'required', 'phone'=>'required', 'mail'=>'required','location'=>'required' ,'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
+
         Business::create($request->all());
         return redirect()->route('business.index')->with('notice','Record created successfully');
     }
@@ -100,10 +108,10 @@ class BusinessController extends Controller
                 'lat' => 'numeric',
                 'lon' => 'numeric',
             ];
- 
+
         $this->validate($request, $rules);
-        $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
-        
+        $this->validate($request,['name'=>'required', 'phone'=>'required', 'mail'=>'required', 'location'=>'required', 'adress'=>'required', 'zip_code'=>'required', 'status'=>'required', 'lat'=>'required','lon'=>'required']);
+
         Business::find($id)->update($request->all());
         $business = DB::table('business')->where('business_id', $id)->first();
         return redirect()->route('business.index')->with('notice', 'The business '.  $business->name.' has been updated successfully.');

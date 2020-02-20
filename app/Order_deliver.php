@@ -14,6 +14,6 @@ class Order_deliver extends Model
      protected $cascadeDeletes = ['projectTransactions'];
 
      public function consumers(){
-       return $this->belongsTo('App\Consumer');
+       return $this->belongsTo('App\Consumer','fk_consumers_id');
      }
 }

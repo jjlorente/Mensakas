@@ -14,6 +14,6 @@ class Extra extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function extra() {
-      return $this->hasMany('App\Order_has_pack');
+      return $this->hasMany('App\Order_has_pack','fk_extra_id');
     }
 }

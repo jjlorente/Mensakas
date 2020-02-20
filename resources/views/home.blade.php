@@ -5,23 +5,40 @@
 <body class="body_home">
     <div class="opciones_admin_panel" >
 
-        <div class="item_panel opcion_user">
-            <a href="{{route('homeuser')}}" title="">
-                <h1>USERS</h1>
-            </a>
-        </div>
+        <a href="consumer" class="item_panel">
+            <img src="/images/consumer.png" alt="consumer">
+            <span>CONSUMERS</span>
+        </a>
 
-        <div class="item_panel opcion_order">
-            <a href="order" title="">
-                <h1>ORDERS</h1>
-            </a>
-        </div>
+        <a href="mensaka" class="item_panel">
+            <img src="/images/mensaka.png" alt="mensaka">
+            <span>MENSAKAS</span>
+        </a>
 
-        <div class="item_panel opcion_menu">
-            <a href="" title="">
-                <h1>MENUS</h1>
-            </a>
-        </div>
+        <a href="business" class="item_panel">
+            <img src="/images/business.png" alt="business">
+            <span>BUSINESS</span>
+        </a>
+
+        <a href="order" class="item_panel">
+            <img src="/images/order.png" alt="order">
+            <span>ORDERS</span>
+        </a>
+
+        <a href="pack" class="item_panel">
+            <img src="/images/pack.png" alt="pack">
+            <span>PACKS</span>
+        </a>
+
+        <a href="product" class="item_panel">
+            <img src="/images/product.png" alt="product">
+            <span>PRODUCTS</span>
+        </a>
+
+        <a href="businessCategory" class="item_panel">
+            <img src="/images/category.png" alt="category">
+            <span>CATEGORIES</span>
+        </a>
 
     </div>
 </body>

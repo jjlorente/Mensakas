@@ -11,10 +11,17 @@ class ConsumerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $consumers=Consumer::orderBy('first_name','ASC')->paginate(5);
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+
+        if ($tipo && $buscar) {
+            $consumers = Consumer::buscarpor($tipo, $buscar)->orderBy('first_name','ASC')->get();
+        }else{
+            $consumers = Consumer::orderBy('first_name','ASC')->paginate(5);
+        } 
         return view('consumer.index',compact('consumers')); 
     }
 
@@ -116,6 +123,11 @@ class ConsumerController extends Controller
         //
         
         $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
+        $order = DB::table('orders')->where('fk_consumers_id', $id)->first();
+        if ($order!="")
+        {
+           return redirect()->route('consumer.index')->with('error', 'It cannot be removed, it has pending orders!');
+        }
         Consumer::find($id)->delete();
         return redirect()->route('consumer.index')->with('notice', 'The consumer '.  $consumer->first_name." ". $consumer->last_name.' has been successfully deleted.');
     }

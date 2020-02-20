@@ -12,10 +12,17 @@ class MensakaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $mensakas=Mensaka::orderBy('first_name','ASC')->paginate(5);
+        
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+
+        if ($tipo && $buscar) {
+            $mensakas = Mensaka::buscarpor($tipo, $buscar)->orderBy('first_name','ASC')->get();
+        }else{
+            $mensakas = Mensaka::orderBy('first_name','ASC')->paginate(5);
+        } 
         return view('mensaka.index',compact('mensakas')); 
     }
 

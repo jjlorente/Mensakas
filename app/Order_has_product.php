@@ -13,10 +13,10 @@ class Order_has_product extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function order(){
-      return $this->belongsTo('App\Order');
+      return $this->belongsTo('App\Order','fk_order_id');
     }
 
     public function product(){
-      return $this->belongsTo('App\Product');
+      return $this->belongsTo('App\Product','fk_product_id');
     }
 }

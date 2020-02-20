@@ -11,7 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,9 +24,10 @@
 </head>
 <body >
     <div id="app" >
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #5c2583;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #5c2583; height: 55px;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color:white;">
+                    <img src="/images/logo_mensakas.jpg" style="width: 35px; height: 35px; margin-bottom: 5px;">
                     {{ config('app.name', 'Mensakas') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -14,7 +14,7 @@ class CreateTables extends Migration
     public function up()
     {
         Schema::create('business', function(Blueprint $table) {
-            
+
             $table->bigIncrements('business_id');
             $table->string('name', 100);
             $table->integer('phone')->length(9)->nullable();
@@ -26,7 +26,7 @@ class CreateTables extends Migration
             $table->decimal('lon', 14, 8)->nullable();
 
             $table->timestamps();
-        
+
         });
 
         Schema::create('mensakas', function(Blueprint $table) {
@@ -37,7 +37,7 @@ class CreateTables extends Migration
             $table->boolean('status')->default(1);
             $table->integer('phone')->length(9);
             $table->timestamps();
-        
+
         });
 
 
@@ -52,7 +52,7 @@ class CreateTables extends Migration
             $table->string('city', 45);
             $table->string('target', 45);
             $table->timestamps();
-        
+
         });
 
         Schema::create('products', function(Blueprint $table) {
@@ -65,9 +65,9 @@ class CreateTables extends Migration
 
             $table->unsignedBigInteger('fk_business_id');
             $table->foreign('fk_business_id')->references('business_id')->on('business')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
         Schema::create('packs', function(Blueprint $table) {
@@ -81,7 +81,7 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('fk_business_id');
             $table->foreign('fk_business_id')->references('business_id')->on('business')->onDelete('cascade');
             $table->timestamps();
-        
+
         });
 
         Schema::create('extras', function(Blueprint $table) {
@@ -107,12 +107,12 @@ class CreateTables extends Migration
             $table->bigIncrements('product_category_id');
             $table->string('name', 100);
             $table->timestamps();
-        
+
         });
 
         Schema::create('product_has_product_category', function(Blueprint $table) {
             $table->engine = 'InnoDB';
-                  
+
             $table->unsignedBigInteger('fk_product_id')->unsigned();
             $table->unsignedBigInteger('fk_product_category_id')->unsigned();
             $table->timestamps();
@@ -129,10 +129,10 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('fk_product_id');
 
             $table->foreign('fk_product_id')->references('product_id')->on('products')->onDelete('cascade');
-            
-        
+
+
             $table->timestamps();
-        
+
         });
 
         Schema::create('orders', function(Blueprint $table) {
@@ -144,9 +144,9 @@ class CreateTables extends Migration
 
             $table->unsignedBigInteger('fk_consumers_id');
             $table->foreign('fk_consumers_id')->references('consumer_id')->on('consumers')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
         Schema::create('order_has_products', function(Blueprint $table) {
@@ -158,7 +158,7 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('fk_product_id');
             $table->foreign('fk_product_id')->references('product_id')->on('products')->onDelete('cascade');
             $table->timestamps();
-        
+
         });
 
         Schema::create('order_has_packs', function(Blueprint $table) {
@@ -170,7 +170,7 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('fk_pack_id');
             $table->foreign('fk_pack_id')->references('pack_id')->on('packs')->onDelete('cascade');
             $table->timestamps();
-        
+
         });
 
         Schema::create('payments', function(Blueprint $table) {
@@ -180,11 +180,11 @@ class CreateTables extends Migration
             $table->boolean('status');
             $table->date('created_date');
             $table->unsignedBigInteger('fk_order_id');
-        
+
             $table->foreign('fk_order_id')->references('order_id')->on('orders')->onDelete('cascade');
-    
+
             $table->timestamps();
-        
+
         });
         Schema::create('invoices', function(Blueprint $table) {
              $table->engine = 'InnoDB';
@@ -193,9 +193,9 @@ class CreateTables extends Migration
             $table->dateTime('date');
             $table->unsignedBigInteger('fk_order_id');
             $table->foreign('fk_order_id')->references('order_id')->on('orders')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
         Schema::create('locations_mensakas', function(Blueprint $table) {
@@ -206,35 +206,35 @@ class CreateTables extends Migration
 
             $table->unsignedBigInteger('fk_mensakas_id');
             $table->foreign('fk_mensakas_id')->references('mensaka_id')->on('mensakas')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
         Schema::create('business_timetables', function(Blueprint $table) {
              $table->engine = 'InnoDB';
             $table->unsignedBigInteger('fk_business_id');
-            $table->integer('day')->length(1);
+            $table->string('day',10)->nullable();
             $table->string('description',100)->nullable();
             $table->time('open');
             $table->time('close');
             $table->foreign('fk_business_id')->references('business_id')->on('business')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
         Schema::create('extra_has_product', function(Blueprint $table) {
              $table->engine = 'InnoDB';
             $table->unsignedBigInteger('fk_extra_id');
             $table->unsignedBigInteger('fk_product_id');
-        
+
             $table->foreign('fk_extra_id')->references('extra_id')->on('extras')->onDelete('cascade');
-        
+
             $table->foreign('fk_product_id')->references('product_id')->on('products')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
 
@@ -245,13 +245,13 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('fk_order_id');
             $table->unsignedBigInteger('fk_mensakas_id');
             $table->unsignedBigInteger('fk_business_business_id');
-            
+
             $table->foreign('fk_order_id')->references('order_id')->on('orders')->onDelete('cascade');
             $table->foreign('fk_mensakas_id')->references('mensaka_id')->on('mensakas')->onDelete('cascade');
             $table->foreign('fk_business_business_id')->references('business_id')->on('business')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
 
@@ -263,9 +263,9 @@ class CreateTables extends Migration
 
             $table->foreign('fk_order_order_id')->references('order_id')->on('orders')->onDelete('cascade');
             $table->foreign('fk_mensaka_mensakas_id')->references('mensaka_id')->on('mensakas')->onDelete('cascade');
-        
+
             $table->timestamps();
-        
+
         });
 
     }

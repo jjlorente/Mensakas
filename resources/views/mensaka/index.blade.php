@@ -7,21 +7,34 @@
       <p class="alert alert-success"> <strong> {{ Session::get('notice') }} </strong> </p>
     @endif 
     </div>
-    <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
-      <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between; ">
-        <h1 style="margin-left: 30px;"><b>Manage Mensakas</b></h1>
-        <p>
+    <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between;">
+      <h1 style="margin-left: 30px;"><b>Manage Mensaka</b></h1>
+      <div style="display: flex; flex-direction: row;">
+        <div style="margin-right: 50px;">
+          <form class="form-inline">
+            <select name="tipo" class="form-control"  style="margin-right: 5px;">
+              <option value="first_name">First name</option>
+              <option value="last_name">Last name</option>
+              <option value="phone">Phone</option>
+              <option value="status">Status</option>
+            </select>
+            <input name="buscarpor" type="search" class="form-control"  style="margin-right: 5px;">
+            <button class=" btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+        <div>
           <a href="{{route('home')}}" type="button" class="btn btn-primary"> Return Admin Panel</a>
-          <a type="submit" href="{{ route('mensaka.create') }}"  class="btn btn-success" style="margin-right: 30px; width: 300px;">Add New Mensaka</a>
-        </p>
+          <a type="submit" href="{{ route('mensaka.create') }}"  class="btn btn-success" style="margin-right: 27px; width: 300px;">Add New Mensaka</a>
+        </div>
       </div>
+    </div>
+    <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
      <thead style="background-color:#5c2583; color: white; align-items: center; ">
        <th style="border-radius: 10px;">First name</th>
        <th style="border-radius: 10px;">Last name</th>
        <th style="border-radius: 10px;">Phone</th>
        <th style="border-radius: 10px;">Status</th>
-       <th style="border-radius: 10px;">Edit</th>
-       <th style="border-radius: 10px;">Delete</th>
+       <th COLSPAN="2" style="border-radius: 10px;">Actions</th>
      </thead>
      <tbody>
           @if($mensakas->count())  
@@ -55,7 +68,9 @@
 
    </table>
    <div>
-      {{ $mensakas->links() }}
+      @if($mensakas instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {{ $mensakas->links() }}
+      @endif
    </div>
    
   </div>

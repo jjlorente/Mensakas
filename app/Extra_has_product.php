@@ -12,10 +12,10 @@ class Extra_has_product extends Model
     protected $cascadeDeletes = ['projectTransactions'];
 
     public function extra(){
-      return $this->belongsTo('App\Extra');
+      return $this->belongsTo('App\Extra','fk_extra_id');
     }
 
     public function product(){
-      return $this->belongsTo('App\product');
+      return $this->belongsTo('App\product','fk_product_id');
     }
 }
