@@ -19,7 +19,7 @@
 			@endif
 
 			<div style="width: 50%;align-content: center;margin: 0 auto;">
-				<h3 style="text-align: center;">Pending petition</h3>
+				<h3 style="text-align: center;">Pending petition on business</h3>
 			</div>
 
       <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">

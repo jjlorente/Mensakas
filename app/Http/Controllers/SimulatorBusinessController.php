@@ -37,11 +37,14 @@ class SimulatorBusinessController extends Controller
         Order::find($orderID)->update($request->all());
         $order = DB::table('orders')->where('order_id', $orderID)->first();
 
-        $businessID = $request->input('business_id');
+        $businessID = $request->get('business_id');
+        error_log($businessID);
         $business = Business::where('business_id','=',$businessID)->get();
+        $business = $business[0];
+        error_log($business);
         $orders0 = Order::where('fk_business_id','=',$businessID)->where('status','=',0)->get();
         $orders1 = Order::where('fk_business_id','=',$businessID)->where('status','=',1)->get();
         
-        return view('simuladorbusiness.showorder',compact('orders0','orders1','business'))->with('notice', 'The order '. $order->order_id .' has been updated successfully.');
+        return redirect()->route('showorderbusiness',compact('orders0','orders1','business'));
     }
 }

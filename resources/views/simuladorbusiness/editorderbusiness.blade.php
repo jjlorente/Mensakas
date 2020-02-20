@@ -23,7 +23,7 @@
 			</div>
 
 
-			<form method="get" action="{{ route('updateorder') }}"  role="form" style="width: 50%;align-content: center;margin: 0 auto;">
+			<form method="post" action="{{ route('updateorder') }}"  role="form" style="width: 50%;align-content: center;margin: 0 auto;">
 				{{ csrf_field() }}
 				<input type="hidden" name="id" value="{{$order->order_id}}">
 				<input type="hidden" name="business_id" value="{{$order->fk_business_id}}">

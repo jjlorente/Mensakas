@@ -19,7 +19,7 @@
 			@endif
 
 			<div style="width: 50%;align-content: center;margin: 0 auto;">
-				<h3 style="text-align: center;">Mesnaka</h3>
+				<h3 style="text-align: center;">Mensaka</h3>
 			</div>
 
       <table class="table table-bordered table-hover" style="width: 100%; text-align: center;">
@@ -29,8 +29,11 @@
          <th style="border-radius: 10px;">Status</th>
          <th style="border-radius: 10px;">Products</th>
          <th style="border-radius: 10px;">Business Name</th>
+         <th style="border-radius: 10px;">Business Location</th>
          <th style="border-radius: 10px;">Business Address</th>
          <th style="border-radius: 10px;">Consumer</th>
+         <th style="border-radius: 10px;">Consumer Location</th>
+         <th style="border-radius: 10px;">Consumer Address</th>
          <th style="border-radius: 10px;">Notice</th>
          <th style="border-radius: 10px;">Delivered</th>
        </thead>
@@ -40,12 +43,14 @@
             @foreach($orders as $order)
                 <tr>
                     <td>{{ $order->order_id }}</td>
-                    @if($order->status==2)
+                    @if($order->status==3)
                       <td style="background-color: #ACECC3; ">Delivered</td>
-                    @elseif($order->status==1)
+                    @elseif($order->status==2)
                       <td style="background-color: #ACECC3; ">On way</td>
+                    @elseif($order->status==2)
+                      <td style="background-color: #ACECC3; ">Preparing order</td>
                     @else
-                      <td style="background-color: #ECACB2; ">Undelivered</td>
+                      <td style="background-color: #ECACB2; ">Pending petition</td>
                     @endif
                     <td>
                       @foreach ( $order->order_has_product as $tabla_producto )
@@ -57,6 +62,13 @@
                       @foreach ($business as $bussine)
                         @if ($bussine->business_id == $order->fk_business_id)
                           {{ $bussine->name }}
+                        @endif
+                      @endforeach
+                    </td>
+                    <td>
+                      @foreach ($business as $bussine)
+                        @if ($bussine->business_id == $order->fk_business_id)
+                          {{ $bussine->location }}
                         @endif
                       @endforeach
                     </td>
@@ -73,6 +85,20 @@
                       @foreach ($consumers as $consumer)
                           @if ($consumer->consumer_id == $order->fk_consumers_id)
                               {{ $consumer->first_name }} {{ $consumer->last_name }}
+                          @endif
+                      @endforeach
+                    </td>
+                    <td>
+                      @foreach ($consumers as $consumer)
+                          @if ($consumer->consumer_id == $order->fk_consumers_id)
+                              {{ $consumer->city }}
+                          @endif
+                      @endforeach
+                    </td>
+                    <td>
+                      @foreach ($consumers as $consumer)
+                          @if ($consumer->consumer_id == $order->fk_consumers_id)
+                              {{ $consumer->address }}
                           @endif
                       @endforeach
                     </td>

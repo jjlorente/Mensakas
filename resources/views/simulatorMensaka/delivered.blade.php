@@ -19,7 +19,7 @@
 			@endif
 
 			<div style="width: 50%;align-content: center;margin: 0 auto;">
-				<h3 style="text-align: center;">Mesnaka</h3>
+				<h3 style="text-align: center;">Mensaka</h3>
 			</div>
 
       <div style="width: 50%;align-content: center;margin: 0 auto; text-align:center; margin-top: 300px; ">

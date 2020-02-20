@@ -15,7 +15,7 @@ class SimulatorMensakaController extends Controller {
     //
     public function index(Request $request) {
         $mensaka = Mensaka::get();
-        return view( 'simulatorMensaka.index', compact('orders','consumers','business','mensaka') );
+        return view( 'simulatorMensaka.index', compact('mensaka') );
     }
 
     public function pedido(Request $request){
