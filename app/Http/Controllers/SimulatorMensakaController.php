@@ -41,6 +41,18 @@ class SimulatorMensakaController extends Controller {
 
     }
 
+    public function delivered(Request $request){
+        $id = $request->get('order_id');
+
+        $order = DB::table('orders')->where('order_id', $id)->update(["status" => 2]);
+        $orders = Order::where('order_id', $id)->get();
+        $consumers = Consumer::get();
+        $business = Business::get();
+        $mensaka = Mensaka::get();
+        return view( 'simulatorMensaka.delivered', compact('orders','consumers','business','mensaka') );
+
+    }
+
 
 
 

@@ -64,7 +64,7 @@
                     <td>
                       @foreach ($business as $bussine)
                         @if ($bussine->business_id == $order->fk_business_id)
-                          {{ $bussine->address }}
+                          {{ $bussine->adress }}
                         @endif
                       @endforeach
                     </td>
@@ -78,7 +78,7 @@
                     </td>
                     <td>{{ $order->description }}</td>
                     <td>
-                      <form class="" action="{{ route('simulatorMensakaPedido') }}" method="get">
+                      <form class="" action="{{ route('simulatorMensakaDelivered') }}" method="get">
                         <input type="hidden" name="order_id" value="{{$order->order_id}}">
                         <button class="btn btn-success btn-block" type="submit">DELIVERED</button>
                       </form>

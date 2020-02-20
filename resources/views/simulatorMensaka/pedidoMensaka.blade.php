@@ -66,7 +66,7 @@
                     <td>
                       @foreach ($business as $bussine)
                         @if ($bussine->business_id == $order->fk_business_id)
-                          {{ $bussine->address }}
+                          {{ $bussine->adress }}
                         @endif
                       @endforeach
                     </td>

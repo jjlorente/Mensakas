@@ -60,5 +60,6 @@ Route::get('/showorderbusiness', 'SimulatorBusinessController@showOrders')->name
 
 //ruta simulator mensaka
 Route::get('/simulatorMensaka', 'SimulatorMensakaController@index')->name('simulatorMensaka');
-Route::get('/simulatorMensakaPedido', 'SimulatorMensakaController@Pedido')->name('simulatorMensakaPedido');
+Route::get('/simulatorMensakaPedido', 'SimulatorMensakaController@Pedido')->name('simulatorMensakaPedido'); 
 Route::get('/simulatorMensakaAccept', 'SimulatorMensakaController@accept')->name('simulatorMensakaAccept');
+Route::get('/simulatorMensakaDelivered', 'SimulatorMensakaController@delivered')->name('simulatorMensakaDelivered');
