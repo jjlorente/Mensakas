@@ -32,7 +32,7 @@ class SimulatorMensakaController extends Controller {
     public function accept(Request $request){
         $id = $request->get('order_id');
 
-        $order = DB::table('orders')->where('order_id', $id)->update(["status" => 1]);
+        $order = DB::table('orders')->where('order_id', $id)->update(["status" => 2]);
         $orders = Order::where('order_id', $id)->get();
         $consumers = Consumer::get();
         $business = Business::get();
@@ -44,7 +44,7 @@ class SimulatorMensakaController extends Controller {
     public function delivered(Request $request){
         $id = $request->get('order_id');
 
-        $order = DB::table('orders')->where('order_id', $id)->update(["status" => 2]);
+        $order = DB::table('orders')->where('order_id', $id)->update(["status" => 3]);
         $orders = Order::where('order_id', $id)->get();
         $consumers = Consumer::get();
         $business = Business::get();
