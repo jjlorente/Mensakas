@@ -5,6 +5,9 @@
   <div  style="width: 80%; text-align: center; margin-left: auto; margin-right: auto; font-family: Vegur, 'PT Sans', Verdana; ">
     @if(Session::has('notice'))
       <p class="alert alert-success"> <strong> {{ Session::get('notice') }} </strong> </p>
+    @endif
+    @if(Session::has('error'))
+      <p class="alert alert-danger"> <strong> {{ Session::get('error') }} </strong> </p>
     @endif 
     </div>
     <div class="table-title" style="display: flex; flex-direction: row; justify-content: space-between;">

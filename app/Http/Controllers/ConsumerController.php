@@ -123,6 +123,11 @@ class ConsumerController extends Controller
         //
         
         $consumer = DB::table('consumers')->where('consumer_id', $id)->first();
+        $order = DB::table('orders')->where('fk_consumers_id', $id)->first();
+        if ($order!="")
+        {
+           return redirect()->route('consumer.index')->with('error', 'It cannot be removed, it has pending orders!');
+        }
         Consumer::find($id)->delete();
         return redirect()->route('consumer.index')->with('notice', 'The consumer '.  $consumer->first_name." ". $consumer->last_name.' has been successfully deleted.');
     }
