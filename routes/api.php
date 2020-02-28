@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use DB;
 use App\Business;
 use App\Product;
 /*
@@ -21,6 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/getbusiness', function(Request $request) {
     return Business::all();
+});
+
+Route::get('/getbusiness/{zip_code}', function(Request $request, $zip_code) {
+    return  Business::where('zip_code', $zip_code)->get();
 });
 
 Route::get('/getbusiness/{id}', function(Request $request, $id) {
