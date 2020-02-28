@@ -44,7 +44,7 @@
           <tr>
             <td>{{$productesCategory->name}}</td>
             <td>
-              {{ $productesCategory->product }}
+              {{ $productesCategory->product_has_product_category }}
             </td>
             <td><a href="{{action('ProductCategoryController@edit', $productesCategory->product_category_id)}}" class="btn btn-primary">Edit</a></td>
             <td><a href="{{ route('productCategory.confirm', $productesCategory->product_category_id ) }}" class="btn btn-danger btncolorblanco"> Delete </a></td>

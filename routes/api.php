@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use DB;
+use App\Business;
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +17,12 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/getbusiness', function(Request $request) {
+    return Business::all();
+});
+
+Route::get('/getbusiness/{id}', function(Request $request, $id) {
+    return  Product::where('fk_business_id', $id)->get();
 });
