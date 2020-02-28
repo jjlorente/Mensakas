@@ -18,14 +18,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::get('/getbusiness', function(Request $request) {
-    return Business::all();
+	$business = Business::all();
+    return response()->json([
+    	"Status"=>"OK",
+    	"Message"=>"OK",
+    	"Business"=>$business
+    ]);
 });
 
 Route::get('/getbusiness/{zip_code}', function(Request $request, $zip_code) {
-    return  Business::where('zip_code', $zip_code)->get();
+	$businessFilter = Business::where('zip_code', $zip_code)->get();
+    return response()->json([
+    	"Status"=>"OK",
+    	"Message"=>"OK",
+    	"Business"=>$businessFilter
+    ]);
 });
 
-Route::get('/getbusiness/{id}', function(Request $request, $id) {
-    return  Product::where('fk_business_id', $id)->get();
+Route::get('/getbusiness/products/{id}', function(Request $request, $id) {
+	$businessProducts = Product::where('fk_business_id', $id)->get();
+    return response()->json([
+    	"Status"=>"OK",
+    	"Message"=>"OK",
+    	"Products"=>$businessProducts
+    ]);
 });
