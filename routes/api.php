@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Business;
+use App\Product;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,19 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/business', function () {
+    $business = Business::all();
+    return $business->toJson();
+});
+
+Route::get('/product/{id}', function($id) {
+    $product = Product::where('fk_business_id' , $id)->get();
+    return $product->toJson();
+});
+
+Route::get('/product', function () {
+    $product = Product::all();
+    return $product->toJson();
 });
